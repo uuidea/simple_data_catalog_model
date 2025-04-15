@@ -11,6 +11,7 @@ prefixes:
   dcterms:	http://purl.org/dc/terms/
   foaf: http://xmlns.com/foaf/0.1/
   vcard: http://www.w3.org/2006/vcard/ns#
+  time:  	http://www.w3.org/2006/time#
 imports:
   - linkml:types
 default_range: string
@@ -18,14 +19,25 @@ default_prefix: sdc
 
 
 classes:
+  Resource:
+    class_uri: dcat:resource
+    slots: 
+      - identifier
+      - description
+      - title
+      - publisher
+      - contactPoint
+      - status
+      - theme
+      - inSeries
+
+
   Dataset:
-    class_uri: dcat:Dataset            
+    class_uri: dcat:Dataset
+    is_a: Resource            
     slots:   ## specified as a list
-     - identifier
-     - description
-     - title
-     - publisher
-     - contactPoint
+     - temporal
+        
 
   Agent:
     class_uri: foaf:Agent
@@ -40,7 +52,29 @@ classes:
   LiceneseDocument:
     class_uri: dcterms:LicenseDocument
     slots:
-      - title   
+      - title
+
+  PeriodOfTime:
+    class_uri: dcterms:PeriodOfTime
+    slots:
+      - hasBeginning
+      - hasEnd
+
+  Concept:
+    class_uri: skos:Concept
+    slots: 
+      - prefLabel
+      - identifier
+      - example
+      - altLabel
+
+  DatasetSeries:
+    is_a: Dataset
+
+  DataCatalog:
+    is_a: Dataset
+    slots:     
+      - dataset              
 
   Container:
     tree_root: true
@@ -49,6 +83,18 @@ classes:
         multivalued: true
         inlined_as_list: true
         range: Dataset
+      concepts:
+        multivalued: true
+        inlined_as_list: true
+        range: Concept
+      series:  
+        multivalued: true
+        inlined_as_list: true
+        range: DatasetSeries
+      datacatalog:  
+        multivalued: false
+        inlined_as_list: true
+        range: DataCatalog
 
 
 
@@ -120,6 +166,86 @@ slots:
     slot_uri: dcat:version
     range: string
     required: false
+
+  temporal:
+    description:
+      "Temporal characteristics of the resource." 
+    slot_uri: dcat:version
+    range: string
+    required: false
+
+  hasBeginning: 
+    description:
+      "Temporal characteristics of the resource." 
+    slot_uri: time:hasBeginning
+    range: date
+    required: false    
+
+  hasEnd:  
+    description:
+      "Temporal characteristics of the resource." 
+    slot_uri: time:hasEnd
+    range: date
+    required: false
+
+  status:
+    description:
+      "The status of the Asset in the context of a particular workflow process." 
+    slot_uri: time:hasEnd
+    range: string
+    required: false
+
+  theme: 
+    description:
+      "A main category of the resource. A resource can have multiple themes." 
+    slot_uri: dcat:theme
+    any_of:
+      - range : string
+      - range : Concept
+    required: false
+
+  definition:
+    description:
+      "A statement or formal explanation of the meaning of a concept." 
+    slot_uri: skos:definition
+    range: string
+    required: false
+
+  prefLabel:
+    description:
+      "The preferred lexical label for a resource, in a given language." 
+    slot_uri: skos:prefLabel
+    range: string
+    required: true
+
+  altLabel:
+    description:
+      "An alternative lexical label for a resource."
+    slot_uri: skos:altLabel  
+    range: string
+    required: false     
+
+  example:
+    description:
+      "An example of the use of a concept."
+    slot_uri: skos:example  
+    range: string
+    required: false   
+
+  dataset:
+    description:
+      "An example of the use of a concept."
+    slot_uri: dcat:dataset  
+    range: Dataset
+    required: false  
+    multivalued: true 
+    
+  inSeries:
+    description:
+      "An example of the use of a concept."
+    slot_uri: dcat:inSeries 
+    range: DatasetSeries
+    required: false   
 
 
 
