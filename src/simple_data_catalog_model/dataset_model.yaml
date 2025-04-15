@@ -1,0 +1,129 @@
+id: https://w3id.org/linkml/examples/personinfo
+name: data_catalog_model
+prefixes:
+  linkml: https://w3id.org/linkml/
+  sdc: https://w3id.org/simpledatacatalog/
+  dcat: http://www.w3.org/ns/dcat#
+  odrl:	http://www.w3.org/ns/odrl/2/
+  prov:	http://www.w3.org/ns/prov#
+  xsd:	http://www.w3.org/2001/XMLSchema#
+  skos:	http://www.w3.org/2004/02/skos/core#
+  dcterms:	http://purl.org/dc/terms/
+  foaf: http://xmlns.com/foaf/0.1/
+  vcard: http://www.w3.org/2006/vcard/ns#
+imports:
+  - linkml:types
+default_range: string
+default_prefix: sdc
+
+
+classes:
+  Dataset:
+    class_uri: dcat:Dataset            
+    slots:   ## specified as a list
+     - identifier
+     - description
+     - title
+     - publisher
+     - contactPoint
+
+  Agent:
+    class_uri: foaf:Agent
+    slots:
+      - name
+
+  Kind:
+    class_uri: vcard:Kind
+    slots:
+      - hasEmail
+
+  LiceneseDocument:
+    class_uri: dcterms:LicenseDocument
+    slots:
+      - title   
+
+  Container:
+    tree_root: true
+    attributes:
+      datasets:
+        multivalued: true
+        inlined_as_list: true
+        range: Dataset
+
+
+
+slots:
+  identifier:
+    identifier: true
+    description: 
+      "An unambiguous reference to the resource within a given context."
+    slot_uri: dcterms:identifier
+    range: string
+    required: true
+
+  title:
+    description: 
+      "A name given to the resource."
+    slot_uri: dcterms:title
+    range: string
+    required: false      
+
+  description: 
+    description: 
+      "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."
+    slot_uri: dcterms:identifier
+    range: string
+    required: false  
+
+  publisher:
+    description: 
+      "An entity responsible for making the resource available."
+    slot_uri: dcterms:publisher
+    any_of:
+      - range: uri
+      - range: Agent 
+    required: false
+
+  name: 
+    description: 
+      "A name for some thing"
+    slot_uri: foaf:name
+    range: string 
+    required: false      
+
+  contactPoint:
+    description: 
+      "Relevant contact information for the cataloged resource. Use of vCard is recommended"
+    slot_uri: vcard:contactPoint
+    any_of:
+      - range: string
+      - range: Kind 
+    required: false     
+
+  hasEmail:
+    description: 
+      "Relevant contact information for the cataloged resource. Use of vCard is recommended"
+    slot_uri: vcard:hasEmail
+    range: string
+    required: false
+  
+  license: 
+    description:
+      "A legal document giving official permission to do something with the resource." 
+    slot_uri: dcterms:license
+    range: LiceneseDocument
+    required: false
+
+  version:
+    description:
+      "The version indicator (name or identifier) of a resource." 
+    slot_uri: dcat:version
+    range: string
+    required: false
+
+
+
+
+
+
+
