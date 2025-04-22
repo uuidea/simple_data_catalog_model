@@ -12,6 +12,7 @@ prefixes:
   foaf: http://xmlns.com/foaf/0.1/
   vcard: http://www.w3.org/2006/vcard/ns#
   time:  	http://www.w3.org/2006/time#
+  dqv: 	http://www.w3.org/ns/dqv#
 imports:
   - linkml:types
 default_range: string
@@ -27,9 +28,12 @@ classes:
       - title
       - publisher
       - contactPoint
+      - license 
       - status
       - theme
       - inSeries
+      - wasDerivedFrom
+      
 
 
   Dataset:
@@ -37,6 +41,8 @@ classes:
     is_a: Resource            
     slots:   ## specified as a list
      - temporal
+     - distribution
+     - inSeries
         
 
   Agent:
@@ -76,6 +82,32 @@ classes:
     slots:     
       - dataset              
 
+  Distribution:
+    slots:
+      - identifier
+      - title
+      - description
+      - accessURL
+      - modified
+      - version
+
+  Metric:
+    slots:
+      - identifier
+      - prefLabel
+      - definition
+      - expectedDataType
+      - inDimension    
+
+  QualityMeasurement:
+    slots:
+      - identifier
+      - computedOn
+      - isMeasurementOf
+      - value
+      - generatedAtTime
+
+
   Container:
     tree_root: true
     attributes:
@@ -83,18 +115,37 @@ classes:
         multivalued: true
         inlined_as_list: true
         range: Dataset
+        required: false
       concepts:
         multivalued: true
         inlined_as_list: true
         range: Concept
+        required: false
       series:  
         multivalued: true
         inlined_as_list: true
         range: DatasetSeries
+        required: false
       datacatalog:  
         multivalued: false
         inlined_as_list: true
         range: DataCatalog
+        required: true
+      distributions: 
+        multivalued: true  
+        inlined_as_list: true
+        range: Distribution
+        required: false
+      metrics: 
+        multivalued: true  
+        inlined_as_list: true
+        range: Metric
+        required: false
+      qualityMeasurements: 
+        multivalued: true  
+        inlined_as_list: true
+        range: QualityMeasurement
+        required: false   
 
 
 
@@ -126,8 +177,9 @@ slots:
       "An entity responsible for making the resource available."
     slot_uri: dcterms:publisher
     any_of:
-      - range: uri
       - range: Agent 
+      - range: uri
+      
     required: false
 
   name: 
@@ -142,8 +194,9 @@ slots:
       "Relevant contact information for the cataloged resource. Use of vCard is recommended"
     slot_uri: vcard:contactPoint
     any_of:
-      - range: string
       - range: Kind 
+      - range: string
+      
     required: false     
 
   hasEmail:
@@ -171,7 +224,7 @@ slots:
     description:
       "Temporal characteristics of the resource." 
     slot_uri: dcat:version
-    range: string
+    range: PeriodOfTime
     required: false
 
   hasBeginning: 
@@ -195,13 +248,21 @@ slots:
     range: string
     required: false
 
+  modified: 
+    description:
+      "Date on which the resource was changed." 
+    slot_uri: dcat:theme
+    range: date
+    required: false  
+
   theme: 
     description:
       "A main category of the resource. A resource can have multiple themes." 
     slot_uri: dcat:theme
     any_of:
-      - range : string
       - range : Concept
+      - range : string
+      
     required: false
 
   definition:
@@ -246,6 +307,103 @@ slots:
     slot_uri: dcat:inSeries 
     range: DatasetSeries
     required: false   
+
+  accessURL:
+    description: 
+      "A URL of the resource that gives access to a distribution of the dataset. E.g., landing page, feed, SPARQL endpoint.
+      "
+    slot_uri: dcat:accessURL
+    range: string  # fix this
+    required: false
+
+  format:
+    description: 
+      "The file format, physical medium, or dimensions of the resource.
+      "
+    slot_uri: dcterms:format
+    range: string
+    required: false # fix this
+
+  distribution:
+    description:
+      "An available distribution of the dataset."
+    slot_uri: dcat:distribution
+    range: Distribution
+    required: false
+
+  expectedDataType:
+    description:
+      "Represents the expected data type for the metric's observed value (e.g., xsd:boolean, xsd:double etc...) "
+    slot_uri: dqv:expectedDataType
+    range: string #fix this
+    required: false
+
+  inDimension:
+    description:
+      "Represents the expected data type for the metric's observed value (e.g., xsd:boolean, xsd:double etc...) "
+    slot_uri: dqv:inDimension
+    range: Dimension
+    required: false
+
+  computedOn:
+    description:
+      "Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed. In the DQV context, this property is generally expected to be used in statements in which objects are instances of dcat:Dataset or dcat:Distribution. "
+    slot_uri: dqv:computedOn  
+    range: Resource
+    required: true
+
+  isMeasurementOf:
+    description:
+      "Indicates the metric being observed."   
+    slot_uri: dqv:isMeasurementOf
+    range: Metric   
+    required: true
+
+  value:
+    description:
+      "Refers to values computed by metric."
+    slot_uri: dqv:value
+    required: true 
+  
+  generatedAtTime:
+    description:
+      "Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation."   
+    slot_uri: prov:generatedAtTime
+    range: datetime
+    required: false
+
+  wasDerivedFrom:
+    description:
+      "A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity."
+    slot_uri: prov:wasDerivedFrom
+    range: Resource
+    required: false      
+
+
+    
+enums:
+  Dimension:
+    enum_uri: dcat:Dimension
+    permissible_values:
+      Accuracy:
+      Completeness:
+      Consistency:  
+      Credibility:
+      Currentness:
+      Accessibility:
+      Compliance:
+      Confidentiality:
+      Efficiency:
+      Precision:
+      Traceability:
+      Understandeability:
+      Availability:
+      Portability:
+      Recoverability:
+
+
+
+
 
 
 

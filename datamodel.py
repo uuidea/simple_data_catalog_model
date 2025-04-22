@@ -98,13 +98,13 @@ class Resource(ConfiguredBaseModel):
          'from_schema': 'https://w3id.org/linkml/examples/personinfo'})
 
     identifier: str = Field(default=..., description="""An unambiguous reference to the resource within a given context.""", json_schema_extra = { "linkml_meta": {'alias': 'identifier',
-         'domain_of': ['Resource', 'Concept'],
+         'domain_of': ['Resource', 'Concept', 'Distribution'],
          'slot_uri': 'dcterms:identifier'} })
     description: Optional[str] = Field(default=None, description="""Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Resource'],
+         'domain_of': ['Resource', 'Distribution'],
          'slot_uri': 'dcterms:identifier'} })
     title: Optional[str] = Field(default=None, description="""A name given to the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Resource', 'LiceneseDocument'],
+         'domain_of': ['Resource', 'LiceneseDocument', 'Distribution'],
          'slot_uri': 'dcterms:title'} })
     publisher: Optional[Union[Agent, str]] = Field(default=None, description="""An entity responsible for making the resource available.""", json_schema_extra = { "linkml_meta": {'alias': 'publisher',
          'any_of': [{'range': 'uri'}, {'range': 'Agent'}],
@@ -120,6 +120,9 @@ class Resource(ConfiguredBaseModel):
          'domain_of': ['Resource'],
          'slot_uri': 'dcat:theme'} })
     inSeries: Optional[str] = Field(default=None, description="""An example of the use of a concept.""", json_schema_extra = { "linkml_meta": {'alias': 'inSeries', 'domain_of': ['Resource'], 'slot_uri': 'dcat:inSeries'} })
+    distribution: Optional[str] = Field(default=None, description="""An available distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'distribution',
+         'domain_of': ['Resource'],
+         'slot_uri': 'dcat:distribution'} })
 
 
 class Dataset(Resource):
@@ -128,13 +131,13 @@ class Dataset(Resource):
 
     temporal: Optional[str] = Field(default=None, description="""Temporal characteristics of the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:version'} })
     identifier: str = Field(default=..., description="""An unambiguous reference to the resource within a given context.""", json_schema_extra = { "linkml_meta": {'alias': 'identifier',
-         'domain_of': ['Resource', 'Concept'],
+         'domain_of': ['Resource', 'Concept', 'Distribution'],
          'slot_uri': 'dcterms:identifier'} })
     description: Optional[str] = Field(default=None, description="""Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Resource'],
+         'domain_of': ['Resource', 'Distribution'],
          'slot_uri': 'dcterms:identifier'} })
     title: Optional[str] = Field(default=None, description="""A name given to the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Resource', 'LiceneseDocument'],
+         'domain_of': ['Resource', 'LiceneseDocument', 'Distribution'],
          'slot_uri': 'dcterms:title'} })
     publisher: Optional[Union[Agent, str]] = Field(default=None, description="""An entity responsible for making the resource available.""", json_schema_extra = { "linkml_meta": {'alias': 'publisher',
          'any_of': [{'range': 'uri'}, {'range': 'Agent'}],
@@ -150,6 +153,9 @@ class Dataset(Resource):
          'domain_of': ['Resource'],
          'slot_uri': 'dcat:theme'} })
     inSeries: Optional[str] = Field(default=None, description="""An example of the use of a concept.""", json_schema_extra = { "linkml_meta": {'alias': 'inSeries', 'domain_of': ['Resource'], 'slot_uri': 'dcat:inSeries'} })
+    distribution: Optional[str] = Field(default=None, description="""An available distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'distribution',
+         'domain_of': ['Resource'],
+         'slot_uri': 'dcat:distribution'} })
 
 
 class Agent(ConfiguredBaseModel):
@@ -171,7 +177,7 @@ class LiceneseDocument(ConfiguredBaseModel):
          'from_schema': 'https://w3id.org/linkml/examples/personinfo'})
 
     title: Optional[str] = Field(default=None, description="""A name given to the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Resource', 'LiceneseDocument'],
+         'domain_of': ['Resource', 'LiceneseDocument', 'Distribution'],
          'slot_uri': 'dcterms:title'} })
 
 
@@ -191,7 +197,7 @@ class Concept(ConfiguredBaseModel):
 
     prefLabel: str = Field(default=..., description="""The preferred lexical label for a resource, in a given language.""", json_schema_extra = { "linkml_meta": {'alias': 'prefLabel', 'domain_of': ['Concept'], 'slot_uri': 'skos:prefLabel'} })
     identifier: str = Field(default=..., description="""An unambiguous reference to the resource within a given context.""", json_schema_extra = { "linkml_meta": {'alias': 'identifier',
-         'domain_of': ['Resource', 'Concept'],
+         'domain_of': ['Resource', 'Concept', 'Distribution'],
          'slot_uri': 'dcterms:identifier'} })
     example: Optional[str] = Field(default=None, description="""An example of the use of a concept.""", json_schema_extra = { "linkml_meta": {'alias': 'example', 'domain_of': ['Concept'], 'slot_uri': 'skos:example'} })
     altLabel: Optional[str] = Field(default=None, description="""An alternative lexical label for a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'altLabel', 'domain_of': ['Concept'], 'slot_uri': 'skos:altLabel'} })
@@ -202,13 +208,13 @@ class DatasetSeries(Dataset):
 
     temporal: Optional[str] = Field(default=None, description="""Temporal characteristics of the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:version'} })
     identifier: str = Field(default=..., description="""An unambiguous reference to the resource within a given context.""", json_schema_extra = { "linkml_meta": {'alias': 'identifier',
-         'domain_of': ['Resource', 'Concept'],
+         'domain_of': ['Resource', 'Concept', 'Distribution'],
          'slot_uri': 'dcterms:identifier'} })
     description: Optional[str] = Field(default=None, description="""Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Resource'],
+         'domain_of': ['Resource', 'Distribution'],
          'slot_uri': 'dcterms:identifier'} })
     title: Optional[str] = Field(default=None, description="""A name given to the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Resource', 'LiceneseDocument'],
+         'domain_of': ['Resource', 'LiceneseDocument', 'Distribution'],
          'slot_uri': 'dcterms:title'} })
     publisher: Optional[Union[Agent, str]] = Field(default=None, description="""An entity responsible for making the resource available.""", json_schema_extra = { "linkml_meta": {'alias': 'publisher',
          'any_of': [{'range': 'uri'}, {'range': 'Agent'}],
@@ -224,6 +230,9 @@ class DatasetSeries(Dataset):
          'domain_of': ['Resource'],
          'slot_uri': 'dcat:theme'} })
     inSeries: Optional[str] = Field(default=None, description="""An example of the use of a concept.""", json_schema_extra = { "linkml_meta": {'alias': 'inSeries', 'domain_of': ['Resource'], 'slot_uri': 'dcat:inSeries'} })
+    distribution: Optional[str] = Field(default=None, description="""An available distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'distribution',
+         'domain_of': ['Resource'],
+         'slot_uri': 'dcat:distribution'} })
 
 
 class DataCatalog(Dataset):
@@ -232,13 +241,13 @@ class DataCatalog(Dataset):
     dataset: Optional[List[str]] = Field(default=None, description="""An example of the use of a concept.""", json_schema_extra = { "linkml_meta": {'alias': 'dataset', 'domain_of': ['DataCatalog'], 'slot_uri': 'dcat:dataset'} })
     temporal: Optional[str] = Field(default=None, description="""Temporal characteristics of the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:version'} })
     identifier: str = Field(default=..., description="""An unambiguous reference to the resource within a given context.""", json_schema_extra = { "linkml_meta": {'alias': 'identifier',
-         'domain_of': ['Resource', 'Concept'],
+         'domain_of': ['Resource', 'Concept', 'Distribution'],
          'slot_uri': 'dcterms:identifier'} })
     description: Optional[str] = Field(default=None, description="""Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Resource'],
+         'domain_of': ['Resource', 'Distribution'],
          'slot_uri': 'dcterms:identifier'} })
     title: Optional[str] = Field(default=None, description="""A name given to the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Resource', 'LiceneseDocument'],
+         'domain_of': ['Resource', 'LiceneseDocument', 'Distribution'],
          'slot_uri': 'dcterms:title'} })
     publisher: Optional[Union[Agent, str]] = Field(default=None, description="""An entity responsible for making the resource available.""", json_schema_extra = { "linkml_meta": {'alias': 'publisher',
          'any_of': [{'range': 'uri'}, {'range': 'Agent'}],
@@ -254,6 +263,28 @@ class DataCatalog(Dataset):
          'domain_of': ['Resource'],
          'slot_uri': 'dcat:theme'} })
     inSeries: Optional[str] = Field(default=None, description="""An example of the use of a concept.""", json_schema_extra = { "linkml_meta": {'alias': 'inSeries', 'domain_of': ['Resource'], 'slot_uri': 'dcat:inSeries'} })
+    distribution: Optional[str] = Field(default=None, description="""An available distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'distribution',
+         'domain_of': ['Resource'],
+         'slot_uri': 'dcat:distribution'} })
+
+
+class Distribution(ConfiguredBaseModel):
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/examples/personinfo'})
+
+    identifier: str = Field(default=..., description="""An unambiguous reference to the resource within a given context.""", json_schema_extra = { "linkml_meta": {'alias': 'identifier',
+         'domain_of': ['Resource', 'Concept', 'Distribution'],
+         'slot_uri': 'dcterms:identifier'} })
+    title: Optional[str] = Field(default=None, description="""A name given to the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Resource', 'LiceneseDocument', 'Distribution'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Resource', 'Distribution'],
+         'slot_uri': 'dcterms:identifier'} })
+    accessURL: Optional[str] = Field(default=None, description="""A URL of the resource that gives access to a distribution of the dataset. E.g., landing page, feed, SPARQL endpoint. """, json_schema_extra = { "linkml_meta": {'alias': 'accessURL',
+         'domain_of': ['Distribution'],
+         'slot_uri': 'dcat:accessURL'} })
+    modified: Optional[date] = Field(default=None, description="""Date on which the resource was changed.""", json_schema_extra = { "linkml_meta": {'alias': 'modified', 'domain_of': ['Distribution'], 'slot_uri': 'dcat:theme'} })
+    version: Optional[str] = Field(default=None, description="""The version indicator (name or identifier) of a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['Distribution'], 'slot_uri': 'dcat:version'} })
 
 
 class Container(ConfiguredBaseModel):
@@ -263,7 +294,8 @@ class Container(ConfiguredBaseModel):
     datasets: Optional[List[Dataset]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'datasets', 'domain_of': ['Container']} })
     concepts: Optional[List[Concept]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'concepts', 'domain_of': ['Container']} })
     series: Optional[List[DatasetSeries]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'series', 'domain_of': ['Container']} })
-    datacatalog: Optional[DataCatalog] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'datacatalog', 'domain_of': ['Container']} })
+    datacatalog: DataCatalog = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'datacatalog', 'domain_of': ['Container']} })
+    distributions: Optional[List[Distribution]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'distributions', 'domain_of': ['Container']} })
 
 
 # Model rebuild
@@ -277,5 +309,6 @@ PeriodOfTime.model_rebuild()
 Concept.model_rebuild()
 DatasetSeries.model_rebuild()
 DataCatalog.model_rebuild()
+Distribution.model_rebuild()
 Container.model_rebuild()
 
