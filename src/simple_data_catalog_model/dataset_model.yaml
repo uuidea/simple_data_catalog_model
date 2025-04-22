@@ -15,7 +15,7 @@ prefixes:
   dqv: 	http://www.w3.org/ns/dqv#
 imports:
   - linkml:types
-default_range: string
+# default_range: string
 default_prefix: sdc
 
 
@@ -71,6 +71,7 @@ classes:
     slots: 
       - prefLabel
       - identifier
+      - definition
       - example
       - altLabel
 
@@ -126,7 +127,7 @@ classes:
         inlined_as_list: true
         range: DatasetSeries
         required: false
-      datacatalog:  
+      dataCatalog:  
         multivalued: false
         inlined_as_list: true
         range: DataCatalog
@@ -176,10 +177,7 @@ slots:
     description: 
       "An entity responsible for making the resource available."
     slot_uri: dcterms:publisher
-    any_of:
-      - range: Agent 
-      - range: uri
-      
+    range: Agent 
     required: false
 
   name: 
@@ -193,10 +191,7 @@ slots:
     description: 
       "Relevant contact information for the cataloged resource. Use of vCard is recommended"
     slot_uri: vcard:contactPoint
-    any_of:
-      - range: Kind 
-      - range: string
-      
+    range: Kind  
     required: false     
 
   hasEmail:
@@ -259,9 +254,9 @@ slots:
     description:
       "A main category of the resource. A resource can have multiple themes." 
     slot_uri: dcat:theme
-    any_of:
-      - range : Concept
-      - range : string
+    range : Concept
+    multivalued: true
+    inlined_as_list: true
       
     required: false
 
@@ -277,7 +272,7 @@ slots:
       "The preferred lexical label for a resource, in a given language." 
     slot_uri: skos:prefLabel
     range: string
-    required: true
+    required: false
 
   altLabel:
     description:
@@ -293,6 +288,7 @@ slots:
     range: string
     required: false   
 
+
   dataset:
     description:
       "An example of the use of a concept."
@@ -300,6 +296,7 @@ slots:
     range: Dataset
     required: false  
     multivalued: true 
+    inlined_as_list: true
     
   inSeries:
     description:
@@ -369,7 +366,7 @@ slots:
     description:
       "Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation."   
     slot_uri: prov:generatedAtTime
-    range: datetime
+    range: Date
     required: false
 
   wasDerivedFrom:

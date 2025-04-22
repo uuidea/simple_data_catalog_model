@@ -1,0 +1,53 @@
+dataCatalog:
+  identifier: fhwiehduwke
+  description: a test data catalog created to validate the schema
+  title: test data catalog
+  dataset:
+    - identifier: "https://www.herrcgre.com"
+
+datasets:
+  - identifier: herrcgre
+    title: test dataset
+    publisher:
+      name : my name
+    contactPoint: 
+      hasEmail: my.name@example.com
+    status: draft
+    theme:
+      - identifier : abc
+      - identifier: bcd 
+      - identifier: def
+    license:
+      title: cc-by 4.0
+
+concepts:
+  - prefLabel: energy
+    identifier: abc
+    definition: energy is energy
+    altLabel: juice
+  - prefLabel: test
+    identifier: bcd
+    definition: test is just for testing
+    altLabel: practice  
+  - prefLabel: data
+    identifier: def
+    definition: data is plural of datum
+    altLabel: information (leavea comment ;-))  
+
+
+metrics:
+  - identifier: fkrhkqewjewrc
+    prefLabel: example metric
+    definition: an example of a data quality metric
+    expectedDataType: xsd:float
+    inDimension: Completeness
+
+
+qualityMeasurements:
+  - identifier: sfasdggfvrln
+    computedOn: 
+      identifier: herrcgre
+    isMeasurementOf:
+      identifier: fkrhkqewjewrc
+    generatedAtTime:  2025-04-22
+    value: 0.9

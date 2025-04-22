@@ -6,22 +6,28 @@ class "Resource" [[{None}]] {
     {field} identifier : string  
     {field} description : string  
     {field} title : string  
-    {field} publisher : string  
-    {field} contactPoint : string  
     {field} status : string  
-    {field} theme : string  
 }
 class "DatasetSeries" [[{None}]] {
     {field} identifier(i) : string  
     {field} description(i) : string  
     {field} title(i) : string  
-    {field} publisher(i) : string  
-    {field} contactPoint(i) : string  
     {field} status(i) : string  
-    {field} theme(i) : string  
+}
+class "Concept" [[{None}]] {
+    {field} prefLabel : string  
+    {field} identifier : string  
+    {field} example : string  
+    {field} altLabel : string  
 }
 class "LiceneseDocument" [[{None}]] {
     {field} title : string  
+}
+class "Kind" [[{None}]] {
+    {field} hasEmail : string  
+}
+class "Agent" [[{None}]] {
+    {field} name : string  
 }
 class "QualityMeasurement" [[{None}]] {
     {field} identifier : string  
@@ -32,14 +38,14 @@ class "Dataset" [[{None}]] {
     {field} identifier(i) : string  
     {field} description(i) : string  
     {field} title(i) : string  
-    {field} publisher(i) : string  
-    {field} contactPoint(i) : string  
     {field} status(i) : string  
-    {field} theme(i) : string  
 }
 "Resource" --> "0..1" "Resource" : "wasDerivedFrom"
 "Resource" --> "0..1" "DatasetSeries" : "inSeries"
+"Resource" *--> "0..*" "Concept" : "theme"
 "Resource" *--> "0..1" "LiceneseDocument" : "license"
+"Resource" *--> "0..1" "Kind" : "contactPoint"
+"Resource" *--> "0..1" "Agent" : "publisher"
 "QualityMeasurement" --> "1" "Resource" : "computedOn"
 "Resource" ^-- "Dataset"
 class "Metric" [[{None}]] {
@@ -60,9 +66,6 @@ class "PeriodOfTime" [[{None}]] {
 }
 "Dataset" *--> "0..1" "PeriodOfTime" : "temporal"
 "Container" *--> "0..*" "Metric" : "metrics"
-class "Kind" [[{None}]] {
-    {field} hasEmail : string  
-}
 class "Distribution" [[{None}]] {
     {field} identifier : string  
     {field} title : string  
@@ -80,23 +83,11 @@ class "DataCatalog" [[{None}]] {
     {field} identifier(i) : string  
     {field} description(i) : string  
     {field} title(i) : string  
-    {field} publisher(i) : string  
-    {field} contactPoint(i) : string  
     {field} status(i) : string  
-    {field} theme(i) : string  
 }
 "Container" *--> "0..*" "Dataset" : "datasets"
 "DataCatalog" --> "0..*" "Dataset" : "dataset"
 "Dataset" ^-- "DataCatalog"
-"Container" *--> "1" "DataCatalog" : "datacatalog"
-class "Concept" [[{None}]] {
-    {field} prefLabel : string  
-    {field} identifier : string  
-    {field} example : string  
-    {field} altLabel : string  
-}
+"Container" *--> "1" "DataCatalog" : "dataCatalog"
 "Container" *--> "0..*" "Concept" : "concepts"
-class "Agent" [[{None}]] {
-    {field} name : string  
-}
 @enduml
