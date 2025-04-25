@@ -31,7 +31,6 @@ classes:
       - license 
       - status
       - theme
-      - inSeries
       - wasDerivedFrom
       
 
@@ -226,14 +225,14 @@ slots:
     description:
       "Temporal characteristics of the resource." 
     slot_uri: time:hasBeginning
-    range: date
+    range: Date
     required: false    
 
   hasEnd:  
     description:
       "Temporal characteristics of the resource." 
     slot_uri: time:hasEnd
-    range: date
+    range: Date
     required: false
 
   status:
@@ -247,7 +246,7 @@ slots:
     description:
       "Date on which the resource was changed." 
     slot_uri: dcat:theme
-    range: date
+    range: Date
     required: false  
 
   theme: 
@@ -291,7 +290,7 @@ slots:
 
   dataset:
     description:
-      "An example of the use of a concept."
+      "."
     slot_uri: dcat:dataset  
     range: Dataset
     required: false  
@@ -300,7 +299,7 @@ slots:
     
   inSeries:
     description:
-      "An example of the use of a concept."
+      "."
     slot_uri: dcat:inSeries 
     range: DatasetSeries
     required: false   

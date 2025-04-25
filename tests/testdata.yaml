@@ -19,6 +19,11 @@ datasets:
       - identifier: def
     license:
       title: cc-by 4.0
+    temporal:
+      hasBeginning: 2025
+      hasEnd: 2025  
+    # inSeries:
+    #   identifier: abcde  
 
 concepts:
   - prefLabel: energy
@@ -34,6 +39,8 @@ concepts:
     definition: data is plural of datum
     altLabel: information (leavea comment ;-))  
 
+series:
+  - identifier: abcde
 
 metrics:
   - identifier: fkrhkqewjewrc
