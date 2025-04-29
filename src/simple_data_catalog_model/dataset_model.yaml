@@ -225,7 +225,7 @@ slots:
     description:
       "Temporal characteristics of the resource." 
     slot_uri: time:hasBeginning
-    range: Date
+    range: DateOrDateTime
     required: false    
 
   hasEnd:  
@@ -246,7 +246,7 @@ slots:
     description:
       "Date on which the resource was changed." 
     slot_uri: dcat:theme
-    range: Date
+    range: DateOrDateTime
     required: false  
 
   theme: 
@@ -255,7 +255,7 @@ slots:
     slot_uri: dcat:theme
     range : Concept
     multivalued: true
-    inlined_as_list: true
+    inlined_as_list: false
       
     required: false
 
@@ -295,7 +295,7 @@ slots:
     range: Dataset
     required: false  
     multivalued: true 
-    inlined_as_list: true
+    inlined_as_list: false
     
   inSeries:
     description:

@@ -3,10 +3,10 @@ dataCatalog:
   description: a test data catalog created to validate the schema
   title: test data catalog
   dataset:
-    - identifier: "https://www.herrcgre.com"
+    - ex:herrcgre
 
 datasets:
-  - identifier: herrcgre
+  - identifier: ex:herrcgre
     title: test dataset
     publisher:
       name : my name
@@ -14,36 +14,36 @@ datasets:
       hasEmail: my.name@example.com
     status: draft
     theme:
-      - identifier : abc
-      - identifier: bcd 
-      - identifier: def
+      - ex:abc
+      - ex:bcd 
+      - ex:def
     license:
       title: cc-by 4.0
     temporal:
       hasBeginning: 2025
       hasEnd: 2025  
-    # inSeries:
-    #   identifier: abcde  
+    inSeries:
+      ex:abcde  
 
 concepts:
   - prefLabel: energy
-    identifier: abc
+    identifier: ex:abc
     definition: energy is energy
     altLabel: juice
   - prefLabel: test
-    identifier: bcd
+    identifier: ex:bcd
     definition: test is just for testing
     altLabel: practice  
   - prefLabel: data
-    identifier: def
+    identifier: ex:def
     definition: data is plural of datum
     altLabel: information (leavea comment ;-))  
 
 series:
-  - identifier: abcde
+  - identifier: ex:abcde
 
 metrics:
-  - identifier: fkrhkqewjewrc
+  - identifier: ex:fkrhkqewjewrc
     prefLabel: example metric
     definition: an example of a data quality metric
     expectedDataType: xsd:float
@@ -51,10 +51,10 @@ metrics:
 
 
 qualityMeasurements:
-  - identifier: sfasdggfvrln
+  - identifier: ex:sfasdggfvrln
     computedOn: 
-      identifier: herrcgre
+      ex:herrcgre
     isMeasurementOf:
-      identifier: fkrhkqewjewrc
+      ex:fkrhkqewjewrc
     generatedAtTime:  2025-04-22
     value: 0.9
