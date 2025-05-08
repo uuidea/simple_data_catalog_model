@@ -52,12 +52,12 @@ metrics:
     inDimension: Completeness
 
 
-# qualityMeasurements:
-#   - identifier: ex:sfasdggfvrln
-#     # computedOn: ex:herrcgre
-#     # isMeasurementOf: ex:fkrhkqewjewrc
-#     # generatedAtTime: 2025-04-22
-#     value: 0.9
+qualityMeasurements:
+  - identifier: ex:sfasdggfvrln
+    computedOn: ex:herrcgre
+    isMeasurementOf: ex:fkrhkqewjewrc
+    generatedAtTime: 2025-04-22
+    value: 0.9
 
 
 

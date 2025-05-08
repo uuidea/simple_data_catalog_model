@@ -18,9 +18,13 @@ imports:
   - linkml:types
 # default_range: string
 default_prefix: sdc
+default_range: Any
 
 
 classes:
+  Any:
+    class_uri: linkml:Any
+
   Resource:
     class_uri: dcat:resource
     slots: 
@@ -105,8 +109,8 @@ classes:
       - identifier
       - computedOn
       - isMeasurementOf
-      - value
       - generatedAtTime
+      - value
 
 
   Container:
@@ -347,7 +351,8 @@ slots:
       "Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed. In the DQV context, this property is generally expected to be used in statements in which objects are instances of dcat:Dataset or dcat:Distribution. "
     slot_uri: dqv:computedOn  
     range: Resource
-    required: false
+    required: true
+
 
   isMeasurementOf:
     description:
@@ -360,7 +365,8 @@ slots:
     description:
       "Refers to values computed by metric."
     slot_uri: dqv:value
-    required: true 
+    required: false 
+    range: Any
   
   generatedAtTime:
     description:
