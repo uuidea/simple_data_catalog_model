@@ -13,6 +13,7 @@ prefixes:
   vcard: http://www.w3.org/2006/vcard/ns#
   time:  	http://www.w3.org/2006/time#
   dqv: 	http://www.w3.org/ns/dqv#
+  ex: www.example.com/
 imports:
   - linkml:types
 # default_range: string
@@ -225,14 +226,14 @@ slots:
     description:
       "Temporal characteristics of the resource." 
     slot_uri: time:hasBeginning
-    range: DateOrDateTime
+    range: date
     required: false    
 
   hasEnd:  
     description:
       "Temporal characteristics of the resource." 
     slot_uri: time:hasEnd
-    range: Date
+    range: date
     required: false
 
   status:
@@ -246,7 +247,7 @@ slots:
     description:
       "Date on which the resource was changed." 
     slot_uri: dcat:theme
-    range: DateOrDateTime
+    range: date
     required: false  
 
   theme: 
@@ -346,14 +347,14 @@ slots:
       "Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed. In the DQV context, this property is generally expected to be used in statements in which objects are instances of dcat:Dataset or dcat:Distribution. "
     slot_uri: dqv:computedOn  
     range: Resource
-    required: true
+    required: false
 
   isMeasurementOf:
     description:
       "Indicates the metric being observed."   
     slot_uri: dqv:isMeasurementOf
     range: Metric   
-    required: true
+    required: false
 
   value:
     description:
@@ -365,7 +366,7 @@ slots:
     description:
       "Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation."   
     slot_uri: prov:generatedAtTime
-    range: Date
+    range: date
     required: false
 
   wasDerivedFrom:

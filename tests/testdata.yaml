@@ -1,5 +1,5 @@
 dataCatalog:
-  identifier: fhwiehduwke
+  identifier: ex:fhwiehduwke
   description: a test data catalog created to validate the schema
   title: test data catalog
   dataset:
@@ -20,10 +20,9 @@ datasets:
     license:
       title: cc-by 4.0
     temporal:
-      hasBeginning: 2025
-      hasEnd: 2025  
-    inSeries:
-      ex:abcde  
+      hasBeginning: 2025-01-01
+      hasEnd: 2025-12-31  
+    inSeries: ex:abcde  
 
 concepts:
   - prefLabel: energy
@@ -37,10 +36,13 @@ concepts:
   - prefLabel: data
     identifier: ex:def
     definition: data is plural of datum
-    altLabel: information (leavea comment ;-))  
+    altLabel: information (leave a comment ;-))  
 
 series:
   - identifier: ex:abcde
+    title: all the datasets by this publisher
+    publisher:
+      name: My name
 
 metrics:
   - identifier: ex:fkrhkqewjewrc
@@ -50,11 +52,12 @@ metrics:
     inDimension: Completeness
 
 
-qualityMeasurements:
-  - identifier: ex:sfasdggfvrln
-    computedOn: 
-      ex:herrcgre
-    isMeasurementOf:
-      ex:fkrhkqewjewrc
-    generatedAtTime:  2025-04-22
-    value: 0.9
+# qualityMeasurements:
+#   - identifier: ex:sfasdggfvrln
+#     # computedOn: ex:herrcgre
+#     # isMeasurementOf: ex:fkrhkqewjewrc
+#     # generatedAtTime: 2025-04-22
+#     value: 0.9
+
+
+
