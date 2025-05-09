@@ -16,7 +16,7 @@ prefixes:
   ex: www.example.com/
 imports:
   - linkml:types
-# default_range: string
+
 default_prefix: sdc
 default_range: Any
 
@@ -24,6 +24,9 @@ default_range: Any
 classes:
   Any:
     class_uri: linkml:Any
+
+  URI:
+    class_uri:   
 
   Resource:
     class_uri: dcat:resource
@@ -249,7 +252,7 @@ slots:
 
   modified: 
     description:
-      "Date on which the resource was changed." 
+      "date on which the resource was changed." 
     slot_uri: dcat:theme
     range: date
     required: false  
@@ -336,7 +339,8 @@ slots:
     description:
       "Represents the expected data type for the metric's observed value (e.g., xsd:boolean, xsd:double etc...) "
     slot_uri: dqv:expectedDataType
-    range: string #fix this
+    # range: string #fix this
+    range: Any #fix this
     required: false
 
   inDimension:
@@ -358,7 +362,7 @@ slots:
     description:
       "Indicates the metric being observed."   
     slot_uri: dqv:isMeasurementOf
-    range: Metric   
+    range: Metric
     required: false
 
   value:
@@ -366,7 +370,7 @@ slots:
       "Refers to values computed by metric."
     slot_uri: dqv:value
     required: false 
-    range: Any
+    range: float
   
   generatedAtTime:
     description:
