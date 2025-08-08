@@ -14,10 +14,11 @@ prefixes:
   time:  	http://www.w3.org/2006/time#
   dqv: 	http://www.w3.org/ns/dqv#
   ex: www.example.com/
+  adms:  http://www.w3.org/ns/adms#
 imports:
   - linkml:types
 
-default_prefix: sdc
+# default_prefix: sdc
 default_range: Any
 
 
@@ -29,7 +30,7 @@ classes:
     class_uri:   
 
   Resource:
-    class_uri: dcat:resource
+    class_uri: dcat:Resource
     slots: 
       - identifier
       - description
@@ -84,13 +85,16 @@ classes:
 
   DatasetSeries:
     is_a: Dataset
+    class_uri: dcat:DatasetSeries
 
   DataCatalog:
     is_a: Dataset
+    class_uri: dcat:Dataset
     slots:     
       - dataset              
 
   Distribution:
+    class_uri: dcat:Distribution
     slots:
       - identifier
       - title
@@ -100,6 +104,7 @@ classes:
       - version
 
   Metric:
+    class_uri: dqv:Metric
     slots:
       - identifier
       - prefLabel
@@ -108,6 +113,7 @@ classes:
       - inDimension    
 
   QualityMeasurement:
+    class_uri: dqv:QualityMeasurement
     slots:
       - identifier
       - computedOn
@@ -246,7 +252,7 @@ slots:
   status:
     description:
       "The status of the Asset in the context of a particular workflow process." 
-    slot_uri: time:hasEnd
+    slot_uri: adms:status
     range: string
     required: false
 
