@@ -13,7 +13,7 @@ prefixes:
   vcard: http://www.w3.org/2006/vcard/ns#
   time:  	http://www.w3.org/2006/time#
   dqv: 	http://www.w3.org/ns/dqv#
-  ex: www.example.com/
+  ex: http://www.example.com/
   adms:  http://www.w3.org/ns/adms#
 imports:
   - linkml:types
