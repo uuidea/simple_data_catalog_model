@@ -89,7 +89,7 @@ classes:
 
   DataCatalog:
     is_a: Dataset
-    class_uri: dcat:Dataset
+    class_uri: dcat:Catalog
     slots:     
       - dataset              
 
@@ -182,7 +182,7 @@ slots:
   description: 
     description: 
       "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."
-    slot_uri: dcterms:identifier
+    slot_uri: dcterms:description
     range: string
     required: false  
 

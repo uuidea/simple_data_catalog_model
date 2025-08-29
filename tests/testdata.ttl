@@ -11,8 +11,8 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:fhwiehduwke a dcat:Dataset ;
-    dcterms:identifier "a test data catalog created to validate the schema" ;
+ex:fhwiehduwke a dcat:Catalog ;
+    dcterms:description "a test data catalog created to validate the schema" ;
     dcterms:title "test data catalog" ;
     dcat:dataset ex:herrcgre .
 
