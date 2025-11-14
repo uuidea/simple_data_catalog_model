@@ -1,8 +1,8 @@
-id: https://w3id.org/linkml/examples/personinfo
+id: https://www.uuidea.eu/profiles/data-catalog
 name: data_catalog_model
 prefixes:
   linkml: https://w3id.org/linkml/
-  sdc: https://w3id.org/simpledatacatalog/
+  sdcdc: https://www.uuidea.eu/profiles/data-catalog
   dcat: http://www.w3.org/ns/dcat#
   odrl:	http://www.w3.org/ns/odrl/2/
   prov:	http://www.w3.org/ns/prov#
@@ -17,6 +17,7 @@ prefixes:
   adms:  http://www.w3.org/ns/adms#
 imports:
   - linkml:types
+#  - policy
 
 # default_prefix: sdc
 default_range: Any

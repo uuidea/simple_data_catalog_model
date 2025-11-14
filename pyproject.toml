@@ -14,12 +14,14 @@ requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: Apache Software License",
-    "Operating System :: OS Independent",
+    "Operating System :: OS Independent"
 ]
 
 dependencies = [
     "linkml",
-    "cruft (>=2.16.0,<3.0.0)"
+    "cruft (>=2.16.0,<3.0.0)",
+    "matplotlib",
+    "igraph"
 ]
 
 [tool.hatch.build.targets.wheel]
