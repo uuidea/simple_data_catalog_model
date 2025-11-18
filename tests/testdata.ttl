@@ -13,6 +13,8 @@
 
 ex:fhwiehduwke a dcat:Catalog ;
     dcterms:description "a test data catalog created to validate the schema" ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "my name" ] ;
     dcterms:title "test data catalog" ;
     dcat:dataset ex:herrcgre .
 
