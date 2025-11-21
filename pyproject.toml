@@ -18,9 +18,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "linkml",
-    "cruft (>=2.16.0,<3.0.0)",
-    "matplotlib"
+    "linkml"
 ]
 
 [tool.hatch.build.targets.wheel]

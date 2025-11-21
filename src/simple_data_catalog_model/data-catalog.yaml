@@ -129,6 +129,7 @@ classes:
       datasets:
         multivalued: true
         inlined_as_list: true
+        inlined: true
         range: Dataset
         required: false
       concepts:
@@ -141,11 +142,13 @@ classes:
         inlined_as_list: true
         range: DatasetSeries
         required: false
+        
       dataCatalog:  
         multivalued: false
-        inlined_as_list: false
         range: DataCatalog
         required: true
+
+        inlined: true
       distributions: 
         multivalued: true  
         inlined_as_list: true
@@ -193,6 +196,8 @@ slots:
     slot_uri: dcterms:publisher
     range: Agent 
     required: false
+    inlined: true
+    
 
   name: 
     description: 
@@ -214,6 +219,7 @@ slots:
     slot_uri: vcard:hasEmail
     range: string
     required: false
+    inlined: true
   
   license: 
     description:
@@ -270,7 +276,7 @@ slots:
     slot_uri: dcat:theme
     range : Concept
     multivalued: true
-    inlined_as_list: false
+    inlined_as_list: true
       
     required: false
 
@@ -310,7 +316,8 @@ slots:
     range: Dataset
     required: false  
     multivalued: true 
-    inlined_as_list: false
+    # inlined_as_list: false
+    # inlined: true
     
   inSeries:
     description:
@@ -391,7 +398,10 @@ slots:
       "A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity."
     slot_uri: prov:wasDerivedFrom
     range: Resource
-    required: false      
+    multivalued: true
+    required: false 
+    # inlinde: false     
+    # inlined_as_list: false
 
 
     
