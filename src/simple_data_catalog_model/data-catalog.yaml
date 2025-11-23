@@ -32,6 +32,7 @@ classes:
 
   Resource:
     class_uri: dcat:Resource
+    description: "A resource that is described in the catalog (e.g., a dataset, a data service, or a catalog)."
     slots: 
       - identifier
       - description
@@ -47,6 +48,7 @@ classes:
 
   Dataset:
     class_uri: dcat:Dataset
+    description: "A collection of data, published or curated by a single agent, and available for access or download."
     is_a: Resource            
     slots:   ## specified as a list
      - temporal
@@ -56,27 +58,32 @@ classes:
 
   Agent:
     class_uri: foaf:Agent
+    description: "An entity (person, organization, or software) that can be a publisher, creator, or contributor of a resource."
     slots:
       - name
 
   Kind:
     class_uri: vcard:Kind
+    description: "A vCard kind representing a contact point for a resource."
     slots:
       - hasEmail
 
   LiceneseDocument:
     class_uri: dcterms:LicenseDocument
+    description: "A vCard kind representing a contact point for a resource."
     slots:
       - title
 
   PeriodOfTime:
     class_uri: dcterms:PeriodOfTime
+    description: "A temporal extent or interval."
     slots:
       - hasBeginning
       - hasEnd
 
   Concept:
     class_uri: skos:Concept
+    description: "A unit of thought (an idea or notion) that can be expressed as a term."
     slots: 
       - prefLabel
       - identifier
@@ -86,16 +93,19 @@ classes:
 
   DatasetSeries:
     is_a: Dataset
+    description: "A series of datasets that are related in some way (e.g., by time, version, or theme)."
     class_uri: dcat:DatasetSeries
 
   DataCatalog:
     is_a: Dataset
+    description: "A curated collection of metadata about datasets, data services, and related resources."
     class_uri: dcat:Catalog
     slots:     
       - dataset              
 
   Distribution:
     class_uri: dcat:Distribution
+    description: "A specific representation of a dataset, typically available for download or access via a service."
     slots:
       - identifier
       - title
@@ -104,8 +114,15 @@ classes:
       - modified
       - version
 
+  DataService:
+    class_uri: dcat:DatasetSeries
+    description: "A service that provides access to a dataset or a collection of datasets."
+    is_a: Resource
+
+
   Metric:
     class_uri: dqv:Metric
+    description: "A measurable aspect of data quality (e.g., accuracy, completeness)."
     slots:
       - identifier
       - prefLabel
@@ -115,6 +132,7 @@ classes:
 
   QualityMeasurement:
     class_uri: dqv:QualityMeasurement
+    description: "An observation of a metric applied to a specific resource."
     slots:
       - identifier
       - computedOn
@@ -214,8 +232,8 @@ slots:
     required: false     
 
   hasEmail:
-    description: 
-      "Relevant contact information for the cataloged resource. Use of vCard is recommended"
+    description: "The e‑mail address associated with a contact point."
+    # unchanged
     slot_uri: vcard:hasEmail
     range: string
     required: false
@@ -403,6 +421,19 @@ slots:
     # inlinde: false     
     # inlined_as_list: false
 
+  servesDataset:
+    description: 	A collection of data that this data service can distribute.
+    slot_uri: dcat:servesDataset
+    range: Dataset
+    multivalued: false
+    required: false
+
+  endpointURL:
+    description: The root location or primary endpoint of the service (a Web-resolvable IRI).
+    slot_uri: dcat:endpointURL
+    range: string
+    multivalued: false
+    required: false
 
     
 enums:
