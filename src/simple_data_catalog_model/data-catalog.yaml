@@ -118,6 +118,9 @@ classes:
     class_uri: dcat:DatasetSeries
     description: "A service that provides access to a dataset or a collection of datasets."
     is_a: Resource
+    slots:
+      - servesDataset
+      - endpointURL
 
 
   Metric:
