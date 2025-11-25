@@ -39,6 +39,7 @@ classes:
       - title
       - publisher
       - contactPoint
+      - issued
       - license 
       - status
       - theme
@@ -113,9 +114,10 @@ classes:
       - accessURL
       - modified
       - version
+      - format
 
   DataService:
-    class_uri: dcat:DatasetSeries
+    class_uri: dcat:DataService
     description: "A service that provides access to a dataset or a collection of datasets."
     is_a: Resource
     slots:
@@ -184,6 +186,11 @@ classes:
         multivalued: true  
         inlined_as_list: true
         range: QualityMeasurement
+        required: false  
+      dataServices:
+        multivalued: true
+        inlined_as_list: true
+        range: DataService
         required: false   
 
 
@@ -219,6 +226,12 @@ slots:
     required: false
     inlined: true
     
+  issued:
+    description: Date of formal issuance (e.g., publication) of the resource./
+    slot_uri: dcterms:issued
+    range: date
+    required: false
+    multivalued: false
 
   name: 
     description: 
@@ -369,6 +382,8 @@ slots:
     slot_uri: dcat:distribution
     range: Distribution
     required: false
+    multivalued: true
+    inlined_as_list: true
 
   expectedDataType:
     description:
@@ -428,8 +443,9 @@ slots:
     description: 	A collection of data that this data service can distribute.
     slot_uri: dcat:servesDataset
     range: Dataset
-    multivalued: false
+    multivalued: true
     required: false
+    inlined_as_list: true
 
   endpointURL:
     description: The root location or primary endpoint of the service (a Web-resolvable IRI).
