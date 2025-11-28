@@ -115,6 +115,7 @@ classes:
       - modified
       - version
       - format
+      - issued
 
   DataService:
     class_uri: dcat:DataService
