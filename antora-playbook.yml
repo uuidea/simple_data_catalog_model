@@ -1,48 +1,41 @@
-name: Build and deploy documentation site
-on:
-  workflow_dispatch:
-concurrency:
-  group: github-pages
-  cancel-in-progress: false
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Configure Pages
-        uses: actions/configure-pages@v3
-      - name: Install Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: '22.20.0'
-      - name: Install Antora 3.1.10
-        run: npm i antora@3.1.10
-      - name: Install Antora dependencies
-        run: npm i
-      - name: Setup Python 3.12.7
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.12.7"
-      - name: Install uv 0.7.8
-        run: curl -LsSf https://astral.sh/uv/0.7.8/install.sh | sh
-      - name: Install Python project dependencies
-        run: uv sync --no-dev --no-install-project --locked
-      #- name: Install Just 1.38.0
-      #run: pip install rust-just==1.38.0
-      - name: Generate site
-        run: npx antora antora-playbook.yml
-      - name: Upload artifacts
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: output/docs
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+site:
+  title: Simple Data Catalog Model
+  # start_page: data-catalog:data-catalog:abcde123.adoc
+content:
+  sources: 
+  - url: . 
+    branches: main
+    # start_page: data-catalog:data-catalog:{{catalog_name}}.adoc
+    
+ui: 
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: supplemental-ui  
+
+asciidoc:
+  attributes:
+    page-pagination: ''
+    experimental: ''
+    kroki-fetch-diagram: true # Render images in browser. Makes building much faster which is convenient for local development.
+    kroki-default-format: svg@
+    kroki-server-url: http://kroki.uuidea.eu:8000/ 
+  extensions:
+    - asciidoctor-kroki
+    - '@djencks/asciidoctor-mathjax'
+
+    # - asciidoctor-mermaid # Add this line to enable Mermaid support
+
+output:
+  clean: true
+  dir: ./docs
+
+antora:
+  extensions:
+    - require: '@antora/lunr-extension'
+      index_latest_only: true
+    - require: '@sntke/antora-mermaid-extension' # <1>
+      mermaid_library_url: https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs # <2>
+      script_stem: header-scripts # <3>
+      mermaid_initialize_options: # <4>
+        start_on_load: true 
