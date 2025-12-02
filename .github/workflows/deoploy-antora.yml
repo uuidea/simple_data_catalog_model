@@ -1,6 +1,7 @@
 name: Build and deploy documentation site
 on:
   workflow_dispatch:
+  push:
 concurrency:
   group: github-pages
   cancel-in-progress: false
