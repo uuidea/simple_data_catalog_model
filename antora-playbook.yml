@@ -24,7 +24,7 @@ asciidoc:
     - asciidoctor-kroki
     - '@djencks/asciidoctor-mathjax'
 
-    - asciidoctor-mermaid # Add this line to enable Mermaid support
+    # - asciidoctor-mermaid # Add this line to enable Mermaid support
 
 output:
   clean: true
