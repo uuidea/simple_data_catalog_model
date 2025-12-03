@@ -1,0 +1,104 @@
+= `ApparentPower`
+:toclevels: 4
+
+
++++Product of the RMS value of the voltage and the RMS value of the current.+++
+
+
+[cols="h,3",width=60%]
+|===
+| Type
+| CIM data type class
+
+
+| URI
+| `cim:ApparentPower`
+
+
+| CIM standard (perspective)
+| IEC61970 (Grid)
+
+
+|===
+
+== Slots
+
+[cols="1,1,2",width=100%]
+|===
+| Name | Type | Description
+
+| `value`
+| 0..1 +
+https://w3id.org/linkml/Float[`float`]
+//| +++None+++
+| n/a
+
+| `multiplier`
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+//| +++None+++
+| n/a
+
+| `unit`
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+//| +++None+++
+| n/a
+|===
+
+////
+
+'''
+
+
+//[discrete]
+[#value]
+=== `value`
+
+
+[cols="h,1",width=60%]
+|===
+| URI
+| `cim:ApparentPower.value`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Float[`float`]
+|===
+
+//[discrete]
+[#multiplier]
+=== `multiplier`
+
+
+[cols="h,1",width=60%]
+|===
+| URI
+| `cim:ApparentPower.multiplier`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+|===
+
+//[discrete]
+[#unit]
+=== `unit`
+
+
+[cols="h,1",width=60%]
+|===
+| URI
+| `cim:ApparentPower.unit`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+|===
+
+////
+
+== Used by
+
+
+This CIM data type is not used by any classes as the range of a slot.

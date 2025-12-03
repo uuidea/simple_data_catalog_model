@@ -1,0 +1,739 @@
+= `LoadResponseCharacteristic`
+:toclevels: 4
+
+
++++Models the characteristic response of the load demand due to changes in system conditions such as voltage and frequency. It is not related to demand response.
+If LoadResponseCharacteristic.exponentModel is True, the exponential voltage or frequency dependent models are specified and used as to calculate active and reactive power components of the load model.
+The equations to calculate active and reactive power components of the load model are internal to the power flow calculation, hence they use different quantities depending on the use case of the data exchange. 
+The equations for exponential voltage dependent load model injected power are: 
+pInjection= Pnominal* (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.pVoltageExponent
+qInjection= Qnominal* (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.qVoltageExponent
+Where: 
+1) * means "multiply" and ** is "raised to power of";
+2) Pnominal and Qnominal represent the active power and reactive power at nominal voltage as any load described by the voltage exponential model shall be given at nominal voltage.  This means that EnergyConsumer.p and EnergyConsumer.q  are at nominal voltage.
+3) After power flow is solved: 
+-pInjection and qInjection correspond to SvPowerflow.p and SvPowerflow.q respectively.  
+- Voltage corresponds to SvVoltage.v at the TopologicalNode where the load is connected.+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| `cim:LoadResponseCharacteristic`
+
+
+| CIM standard (perspective)
+| IEC61970 (Grid)
+
+
+
+|===
+
+== Class hierarchy
+* xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+** *`LoadResponseCharacteristic`*
+
+
+== Slots
+
+
+
+.Associated classes
+[d2,svg,theme=4]
+----
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+LoadResponseCharacteristic {
+  style {
+    fill: "#eccfcb"
+    shadow: true
+  }
+}
+
+
+
+EnergyConsumer {
+  style {
+    fill: "#eccfcb"
+    shadow: true
+  }
+}
+
+
+
+
+LoadResponseCharacteristic -> EnergyConsumer: EnergyConsumer
+
+
+legend: "" {
+  style: {
+    fill: transparent
+    stroke: transparent
+  }
+  grid-rows: 3
+  grid-columns: 2
+  grid-gap: 10
+  near: bottom-right
+  iec61968_color: "" {
+    style: {
+      fill: "#d1e7c2"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  iec61968_text: "IEC61968 (Enterprise)" {
+    shape: text
+  }
+  iec61970_color: "" {
+    style: {
+      fill: "#eccfcb"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  iec61970_text: "IEC61970 (Grid)" {
+    shape: text
+  }
+  iec62325_color: "" {
+    style: {
+      fill: "#fffbef"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  iec62325_text: "IEC62325 (Market)" {
+    shape: text
+  }
+}
+----
+
+
+[cols="1,1,2,1",width=100%]
+|===
+| Name | Type | Description | Inherited from
+
+| <<EnergyConsumer,`EnergyConsumer`>>
+//| [[slots_table.EnergyConsumer]]<<EnergyConsumer,`EnergyConsumer`>>
+| 0..* +
+xref::class/EnergyConsumer.adoc[`EnergyConsumer`]
+| +++The set of loads that have the response characteristics.+++
+| _n/a_
+
+| <<exponentModel,`exponentModel`>>
+//| [[slots_table.exponentModel]]<<exponentModel,`exponentModel`>>
+| 1 +
+https://w3id.org/linkml/Boolean[`boolean`]
+| +++Indicates the exponential voltage dependency model is to be used. If false, the coefficient model is to be used.
+The...+++
+| _n/a_
+
+| <<pConstantCurrent,`pConstantCurrent`>>
+//| [[slots_table.pConstantCurrent]]<<pConstantCurrent,`pConstantCurrent`>>
+| 0..1 +
+https://w3id.org/linkml/Double[`double`]
+| +++Portion of active power load modelled as constant current.+++
+| _n/a_
+
+| <<pConstantImpedance,`pConstantImpedance`>>
+//| [[slots_table.pConstantImpedance]]<<pConstantImpedance,`pConstantImpedance`>>
+| 0..1 +
+https://w3id.org/linkml/Double[`double`]
+| +++Portion of active power load modelled as constant impedance.+++
+| _n/a_
+
+| <<pConstantPower,`pConstantPower`>>
+//| [[slots_table.pConstantPower]]<<pConstantPower,`pConstantPower`>>
+| 0..1 +
+https://w3id.org/linkml/Double[`double`]
+| +++Portion of active power load modelled as constant power.+++
+| _n/a_
+
+| <<pFrequencyExponent,`pFrequencyExponent`>>
+//| [[slots_table.pFrequencyExponent]]<<pFrequencyExponent,`pFrequencyExponent`>>
+| 0..1 +
+https://w3id.org/linkml/Double[`double`]
+| +++Exponent of per unit frequency effecting active power.+++
+| _n/a_
+
+| <<pVoltageExponent,`pVoltageExponent`>>
+//| [[slots_table.pVoltageExponent]]<<pVoltageExponent,`pVoltageExponent`>>
+| 0..1 +
+https://w3id.org/linkml/Double[`double`]
+| +++Exponent of per unit voltage effecting real power.+++
+| _n/a_
+
+| <<qConstantCurrent,`qConstantCurrent`>>
+//| [[slots_table.qConstantCurrent]]<<qConstantCurrent,`qConstantCurrent`>>
+| 0..1 +
+https://w3id.org/linkml/Double[`double`]
+| +++Portion of reactive power load modelled as constant current.+++
+| _n/a_
+
+| <<qConstantImpedance,`qConstantImpedance`>>
+//| [[slots_table.qConstantImpedance]]<<qConstantImpedance,`qConstantImpedance`>>
+| 0..1 +
+https://w3id.org/linkml/Double[`double`]
+| +++Portion of reactive power load modelled as constant impedance.+++
+| _n/a_
+
+| <<qConstantPower,`qConstantPower`>>
+//| [[slots_table.qConstantPower]]<<qConstantPower,`qConstantPower`>>
+| 0..1 +
+https://w3id.org/linkml/Double[`double`]
+| +++Portion of reactive power load modelled as constant power.+++
+| _n/a_
+
+| <<qFrequencyExponent,`qFrequencyExponent`>>
+//| [[slots_table.qFrequencyExponent]]<<qFrequencyExponent,`qFrequencyExponent`>>
+| 0..1 +
+https://w3id.org/linkml/Double[`double`]
+| +++Exponent of per unit frequency effecting reactive power.+++
+| _n/a_
+
+| <<qVoltageExponent,`qVoltageExponent`>>
+//| [[slots_table.qVoltageExponent]]<<qVoltageExponent,`qVoltageExponent`>>
+| 0..1 +
+https://w3id.org/linkml/Double[`double`]
+| +++Exponent of per unit voltage effecting reactive power.+++
+| _n/a_
+
+| <<description,`description`>>
+//| [[slots_table.description]]<<description,`description`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to...+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<energyIdentCodeEic,`energyIdentCodeEic`>>
+//| [[slots_table.energyIdentCodeEic]]<<energyIdentCodeEic,`energyIdentCodeEic`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16...+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<mRID,`mRID`>>
+//| [[slots_table.mRID]]<<mRID,`mRID`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is...+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<name,`name`>>
+//| [[slots_table.name]]<<name,`name`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The name is any free human readable and possibly non unique text naming the object.+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<shortName,`shortName`>>
+//| [[slots_table.shortName]]<<shortName,`shortName`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+|===
+
+'''
+
+
+//[discrete]
+[#description]
+=== `description`
++++The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.description`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.description,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#EnergyConsumer]
+=== `EnergyConsumer`
++++The set of loads that have the response characteristics.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.EnergyConsumer`
+| Cardinality
+| 0..*
+| Type
+| xref::class/EnergyConsumer.adoc[`EnergyConsumer`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.EnergyConsumer,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#energyIdentCodeEic]
+=== `energyIdentCodeEic`
++++The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| http://iec.ch/TC57/CIM100-European#IdentifiedObject.energyIdentCodeEic[`eu:IdentifiedObject.energyIdentCodeEic`]
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.energyIdentCodeEic,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#exponentModel]
+=== `exponentModel`
++++Indicates the exponential voltage dependency model is to be used. If false, the coefficient model is to be used.
+The exponential voltage dependency model consist of the attributes:
+- pVoltageExponent
+- qVoltageExponent
+- pFrequencyExponent
+- qFrequencyExponent.
+The coefficient model consist of the attributes:
+- pConstantImpedance
+- pConstantCurrent
+- pConstantPower
+- qConstantImpedance
+- qConstantCurrent
+- qConstantPower.
+The sum of pConstantImpedance, pConstantCurrent and pConstantPower shall equal 1.
+The sum of qConstantImpedance, qConstantCurrent and qConstantPower shall equal 1.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.exponentModel`
+| Cardinality
+| 1
+| Type
+| https://w3id.org/linkml/Boolean[`boolean`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.exponentModel,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#mRID]
+=== `mRID`
++++Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.mRID`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.mRID,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#name]
+=== `name`
++++The name is any free human readable and possibly non unique text naming the object.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.name`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.name,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#pConstantCurrent]
+=== `pConstantCurrent`
++++Portion of active power load modelled as constant current.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.pConstantCurrent`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Double[`double`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.pConstantCurrent,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#pConstantImpedance]
+=== `pConstantImpedance`
++++Portion of active power load modelled as constant impedance.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.pConstantImpedance`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Double[`double`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.pConstantImpedance,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#pConstantPower]
+=== `pConstantPower`
++++Portion of active power load modelled as constant power.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.pConstantPower`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Double[`double`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.pConstantPower,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#pFrequencyExponent]
+=== `pFrequencyExponent`
++++Exponent of per unit frequency effecting active power.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.pFrequencyExponent`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Double[`double`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.pFrequencyExponent,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#pVoltageExponent]
+=== `pVoltageExponent`
++++Exponent of per unit voltage effecting real power.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.pVoltageExponent`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Double[`double`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.pVoltageExponent,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#qConstantCurrent]
+=== `qConstantCurrent`
++++Portion of reactive power load modelled as constant current.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.qConstantCurrent`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Double[`double`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.qConstantCurrent,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#qConstantImpedance]
+=== `qConstantImpedance`
++++Portion of reactive power load modelled as constant impedance.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.qConstantImpedance`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Double[`double`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.qConstantImpedance,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#qConstantPower]
+=== `qConstantPower`
++++Portion of reactive power load modelled as constant power.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.qConstantPower`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Double[`double`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.qConstantPower,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#qFrequencyExponent]
+=== `qFrequencyExponent`
++++Exponent of per unit frequency effecting reactive power.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.qFrequencyExponent`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Double[`double`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.qFrequencyExponent,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#qVoltageExponent]
+=== `qVoltageExponent`
++++Exponent of per unit voltage effecting reactive power.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:LoadResponseCharacteristic.qVoltageExponent`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Double[`double`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.qVoltageExponent,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#shortName]
+=== `shortName`
++++The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.shortName`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.shortName,&#10548;>>
+--
+////
+
+
+
+
+
+== Used by
+
+
+[cols="1,1",width=65%]
+|===
+| Source class | Slot name
+
+
+
+| xref::class/EnergyConsumer.adoc[`EnergyConsumer`] | xref::class/EnergyConsumer.adoc#LoadResponse[`LoadResponse`]
+
+
+|===
+

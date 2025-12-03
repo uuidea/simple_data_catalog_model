@@ -1,0 +1,554 @@
+= `Bay`
+:toclevels: 4
+
+
++++A collection of power system resources (within a given substation) including conducting equipment, protection relays, measurements, and telemetry.  A bay typically represents a physical grouping related to modularization of equipment.+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| `cim:Bay`
+
+
+| CIM standard (perspective)
+| IEC61970 (Grid)
+
+
+
+|===
+
+== Class hierarchy
+* xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+** xref::class/PowerSystemResource.adoc[`PowerSystemResource`]
+*** xref::class/ConnectivityNodeContainer.adoc[`ConnectivityNodeContainer`]
+**** xref::class/EquipmentContainer.adoc[`EquipmentContainer`]
+***** *`Bay`*
+
+
+== Slots
+
+
+
+
+[cols="1,1,2,1",width=100%]
+|===
+| Name | Type | Description | Inherited from
+
+| <<Feeder,`Feeder`>>
+//| [[slots_table.Feeder]]<<Feeder,`Feeder`>>
+| 0..1 +
+xref::class/Feeder.adoc[`Feeder`]
+| +++The feeder to which this Bay belongs+++
+| _n/a_
+
+| <<VoltageLevel,`VoltageLevel`>>
+//| [[slots_table.VoltageLevel]]<<VoltageLevel,`VoltageLevel`>>
+| 1 +
+xref::class/VoltageLevel.adoc[`VoltageLevel`]
+| +++The voltage level containing this bay.+++
+| _n/a_
+
+| <<gridOpeningType,`gridOpeningType`>>
+//| [[slots_table.gridOpeningType]]<<gridOpeningType,`gridOpeningType`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++Type of switching that takes places in this bay, should be an enum+++
+| _n/a_
+
+| <<outgoing,`outgoing`>>
+//| [[slots_table.outgoing]]<<outgoing,`outgoing`>>
+| 0..1 +
+https://w3id.org/linkml/Boolean[`boolean`]
+| +++flag indicating when the bay is typically used to transort power away from the busbar/voltagelevel or not+++
+| _n/a_
+
+| <<Equipments,`Equipments`>>
+//| [[slots_table.Equipments]]<<Equipments,`Equipments`>>
+| 0..* +
+xref::class/Equipment.adoc[`Equipment`]
+| +++Contained equipment.+++
+| xref::class/EquipmentContainer.adoc[`EquipmentContainer`]
+
+| <<ConnectivityNodes,`ConnectivityNodes`>>
+//| [[slots_table.ConnectivityNodes]]<<ConnectivityNodes,`ConnectivityNodes`>>
+| 0..* +
+xref::class/ConnectivityNode.adoc[`ConnectivityNode`]
+| +++Connectivity nodes which belong to this connectivity node container.+++
+| xref::class/ConnectivityNodeContainer.adoc[`ConnectivityNodeContainer`]
+
+| <<AssetDataSheet,`AssetDataSheet`>>
+//| [[slots_table.AssetDataSheet]]<<AssetDataSheet,`AssetDataSheet`>>
+| 0..1 +
+xref::class/AssetInfo.adoc[`AssetInfo`]
+| +++Datasheet information for this power system resource.+++
+| xref::class/PowerSystemResource.adoc[`PowerSystemResource`]
+
+| <<Assets,`Assets`>>
+//| [[slots_table.Assets]]<<Assets,`Assets`>>
+| 0..* +
+xref::class/Asset.adoc[`Asset`]
+| +++All assets represented by this power system resource. For example, multiple conductor assets are electrically modelled as a...+++
+| xref::class/PowerSystemResource.adoc[`PowerSystemResource`]
+
+| <<PSRType,`PSRType`>>
+//| [[slots_table.PSRType]]<<PSRType,`PSRType`>>
+| 0..1 +
+xref::class/PSRType.adoc[`PSRType`]
+| +++Custom classification for this power system resource.+++
+| xref::class/PowerSystemResource.adoc[`PowerSystemResource`]
+
+| <<description,`description`>>
+//| [[slots_table.description]]<<description,`description`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to...+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<energyIdentCodeEic,`energyIdentCodeEic`>>
+//| [[slots_table.energyIdentCodeEic]]<<energyIdentCodeEic,`energyIdentCodeEic`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16...+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<mRID,`mRID`>>
+//| [[slots_table.mRID]]<<mRID,`mRID`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is...+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<name,`name`>>
+//| [[slots_table.name]]<<name,`name`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The name is any free human readable and possibly non unique text naming the object.+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<shortName,`shortName`>>
+//| [[slots_table.shortName]]<<shortName,`shortName`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+|===
+
+'''
+
+
+//[discrete]
+[#AssetDataSheet]
+=== `AssetDataSheet`
++++Datasheet information for this power system resource.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:PowerSystemResource.AssetDataSheet`
+| Cardinality
+| 0..1
+| Type
+| xref::class/AssetInfo.adoc[`AssetInfo`]
+
+| Inherited from
+| xref::class/PowerSystemResource.adoc[`PowerSystemResource`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.AssetDataSheet,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#Assets]
+=== `Assets`
++++All assets represented by this power system resource. For example, multiple conductor assets are electrically modelled as a single AC line segment.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:PowerSystemResource.Assets`
+| Cardinality
+| 0..*
+| Type
+| xref::class/Asset.adoc[`Asset`]
+
+| Inherited from
+| xref::class/PowerSystemResource.adoc[`PowerSystemResource`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.Assets,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#ConnectivityNodes]
+=== `ConnectivityNodes`
++++Connectivity nodes which belong to this connectivity node container.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:ConnectivityNodeContainer.ConnectivityNodes`
+| Cardinality
+| 0..*
+| Type
+| xref::class/ConnectivityNode.adoc[`ConnectivityNode`]
+
+| Inherited from
+| xref::class/ConnectivityNodeContainer.adoc[`ConnectivityNodeContainer`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.ConnectivityNodes,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#description]
+=== `description`
++++The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.description`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.description,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#energyIdentCodeEic]
+=== `energyIdentCodeEic`
++++The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| http://iec.ch/TC57/CIM100-European#IdentifiedObject.energyIdentCodeEic[`eu:IdentifiedObject.energyIdentCodeEic`]
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.energyIdentCodeEic,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#Equipments]
+=== `Equipments`
++++Contained equipment.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:EquipmentContainer.Equipments`
+| Cardinality
+| 0..*
+| Type
+| xref::class/Equipment.adoc[`Equipment`]
+
+| Inherited from
+| xref::class/EquipmentContainer.adoc[`EquipmentContainer`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.Equipments,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#Feeder]
+=== `Feeder`
++++The feeder to which this Bay belongs+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| http://alliander.com/uno-gridbuilder#Bay.Feeder[`uno:Bay.Feeder`]
+| Cardinality
+| 0..1
+| Type
+| xref::class/Feeder.adoc[`Feeder`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.Feeder,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#gridOpeningType]
+=== `gridOpeningType`
++++Type of switching that takes places in this bay, should be an enum+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| http://alliander.com/uno-gridbuilder#Bay.gridOpeningType[`uno:Bay.gridOpeningType`]
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.gridOpeningType,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#mRID]
+=== `mRID`
++++Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.mRID`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.mRID,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#name]
+=== `name`
++++The name is any free human readable and possibly non unique text naming the object.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.name`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.name,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#outgoing]
+=== `outgoing`
++++flag indicating when the bay is typically used to transort power away from the busbar/voltagelevel or not+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| http://alliander.com/uno-gridbuilder#Bay.outgoing[`uno:Bay.outgoing`]
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/Boolean[`boolean`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.outgoing,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#PSRType]
+=== `PSRType`
++++Custom classification for this power system resource.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:PowerSystemResource.PSRType`
+| Cardinality
+| 0..1
+| Type
+| xref::class/PSRType.adoc[`PSRType`]
+
+| Inherited from
+| xref::class/PowerSystemResource.adoc[`PowerSystemResource`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.PSRType,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#shortName]
+=== `shortName`
++++The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.shortName`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.shortName,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#VoltageLevel]
+=== `VoltageLevel`
++++The voltage level containing this bay.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:Bay.VoltageLevel`
+| Cardinality
+| 1
+| Type
+| xref::class/VoltageLevel.adoc[`VoltageLevel`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.VoltageLevel,&#10548;>>
+--
+////
+
+
+
+
+
+== Used by
+
+
+[cols="1,1",width=65%]
+|===
+| Source class | Slot name
+
+
+
+| xref::class/VoltageLevel.adoc[`VoltageLevel`] | xref::class/VoltageLevel.adoc#Bays[`Bays`]
+
+
+|===
+

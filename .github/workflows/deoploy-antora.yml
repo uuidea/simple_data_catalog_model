@@ -29,6 +29,14 @@ jobs:
         run: curl -LsSf https://astral.sh/uv/0.7.8/install.sh | sh
       - name: Install Python project dependencies
         run: uv sync --no-dev --no-install-project --locked
+      - name: Generate asciidoc
+        run: |
+            cp -r "documentation" "artifacts"
+                mkdir -p "artifacts/documentation/modules/schema"
+                poetry run python -m linkml_asciidoc_generator.main \
+                    "artifacts/information_models/uno_data_model.linkml.yaml" \
+                    "artifacts/documentation/modules/schema" \
+                    --no-relations-diagrams
       #- name: Install Just 1.38.0
       #run: pip install rust-just==1.38.0
       - name: Install Node.js

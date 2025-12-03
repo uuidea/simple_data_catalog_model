@@ -1,0 +1,272 @@
+= `Asset`
+:toclevels: 4
+
+
++++Tangible resource of the utility, including power system equipment, various end devices, cabinets, buildings, etc. For electrical network equipment, the role of the asset is defined through PowerSystemResource and its subclasses, defined mainly in the Wires model (refer to IEC61970-301 and model package IEC61970::Wires). Asset description places emphasis on the physical characteristics of the equipment fulfilling that role.+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| `cim:Asset`
+
+
+| CIM standard (perspective)
+| IEC61968 (Enterprise)
+
+
+
+|===
+
+== Class hierarchy
+* xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+** *`Asset`*
+
+
+== Slots
+
+
+
+
+[cols="1,1,2,1",width=100%]
+|===
+| Name | Type | Description | Inherited from
+
+| <<inUseDate,`inUseDate`>>
+//| [[slots_table.inUseDate]]<<inUseDate,`inUseDate`>>
+| 1 +
+https://w3id.org/linkml/String[`string`]
+| +++In use dates for this asset.+++
+| _n/a_
+
+| <<description,`description`>>
+//| [[slots_table.description]]<<description,`description`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to...+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<energyIdentCodeEic,`energyIdentCodeEic`>>
+//| [[slots_table.energyIdentCodeEic]]<<energyIdentCodeEic,`energyIdentCodeEic`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16...+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<mRID,`mRID`>>
+//| [[slots_table.mRID]]<<mRID,`mRID`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is...+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<name,`name`>>
+//| [[slots_table.name]]<<name,`name`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The name is any free human readable and possibly non unique text naming the object.+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+| <<shortName,`shortName`>>
+//| [[slots_table.shortName]]<<shortName,`shortName`>>
+| 0..1 +
+https://w3id.org/linkml/String[`string`]
+| +++The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.+++
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+|===
+
+'''
+
+
+//[discrete]
+[#description]
+=== `description`
++++The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.description`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.description,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#energyIdentCodeEic]
+=== `energyIdentCodeEic`
++++The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| http://iec.ch/TC57/CIM100-European#IdentifiedObject.energyIdentCodeEic[`eu:IdentifiedObject.energyIdentCodeEic`]
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.energyIdentCodeEic,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#inUseDate]
+=== `inUseDate`
++++In use dates for this asset.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:Asset.inUseDate`
+| Cardinality
+| 1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.inUseDate,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#mRID]
+=== `mRID`
++++Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.mRID`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.mRID,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#name]
+=== `name`
++++The name is any free human readable and possibly non unique text naming the object.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.name`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.name,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#shortName]
+=== `shortName`
++++The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.+++
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:IdentifiedObject.shortName`
+| Cardinality
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+| Inherited from
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.shortName,&#10548;>>
+--
+////
+
+
+
+
+
+== Used by
+
+
+[cols="1,1",width=65%]
+|===
+| Source class | Slot name
+
+
+
+| xref::class/PowerSystemResource.adoc[`PowerSystemResource`] | xref::class/PowerSystemResource.adoc#Assets[`Assets`]
+
+
+|===
+

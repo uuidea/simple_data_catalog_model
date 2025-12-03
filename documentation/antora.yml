@@ -1,0 +1,5 @@
+name: documentation
+title: UNO data model
+version: ~
+nav:
+- artifacts/documentation/modules/schema/nav.adoc
