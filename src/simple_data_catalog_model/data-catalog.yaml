@@ -398,7 +398,7 @@ slots:
     description:
       "Represents the expected data type for the metric's observed value (e.g., xsd:boolean, xsd:double etc...) "
     slot_uri: dqv:inDimension
-    range: Dimension
+    range: string
     required: false
 
   computedOn:
@@ -455,26 +455,33 @@ slots:
     multivalued: false
     required: false
 
-    
-enums:
-  Dimension:
-    enum_uri: dcat:Dimension
-    permissible_values:
-      Accuracy:
-      Completeness:
-      Consistency:  
-      Credibility:
-      Currentness:
-      Accessibility:
-      Compliance:
-      Confidentiality:
-      Efficiency:
-      Precision:
-      Traceability:
-      Understandeability:
-      Availability:
-      Portability:
-      Recoverability:
+
+# enums:
+#   Dimension:
+#     permissible_values:
+#       SIBLING_OF:
+#       PARENT_OF:
+#       CHILD_OF:
+
+# enums:
+#   Dimension:
+#     enum_uri: dcat:Dimension
+#     permissible_values:
+#       Accuracy:
+#       Completeness:
+#       Consistency:  
+#       Credibility:
+#       Currentness:
+#       Accessibility:
+#       Compliance:
+#       Confidentiality:
+#       Efficiency:
+#       Precision:
+#       Traceability:
+#       Understandeability:
+#       Availability:
+#       Portability:
+#       Recoverability:
 
 
 

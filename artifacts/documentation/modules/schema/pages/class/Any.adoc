@@ -1,0 +1,32 @@
+= `Any`
+:toclevels: 4
+
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| https://w3id.org/linkml/Any[`linkml:Any`]
+
+
+
+
+|===
+
+== Class hierarchy
+* *`Any`*
+
+
+== Slots
+
+
+This class has no slots.
+
+
+== Used by
+
+
+This class is not used by any other classes as the range of a slot.

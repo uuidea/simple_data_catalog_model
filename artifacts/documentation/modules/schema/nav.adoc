@@ -2,266 +2,66 @@
 * Information model
 ** xref::index.adoc[Index]
 ** Classes
-*** xref::class/.adoc[ (root)]
+*** xref::class/Container.adoc[Container (root)]
 
-*** xref::class/ACDCTerminal.adoc[ACDCTerminal]
+*** xref::class/Agent.adoc[Agent]
 
 
 
-*** xref::class/ACLineSegment.adoc[ACLineSegment]
+*** xref::class/Any.adoc[Any]
 
 
 
-*** xref::class/Asset.adoc[Asset]
+*** xref::class/Concept.adoc[Concept]
 
 
 
-*** xref::class/AssetInfo.adoc[AssetInfo]
 
+*** xref::class/DataCatalog.adoc[DataCatalog]
 
 
-*** xref::class/BaseVoltage.adoc[BaseVoltage]
 
+*** xref::class/DataService.adoc[DataService]
 
 
-*** xref::class/BasicIntervalSchedule.adoc[BasicIntervalSchedule]
 
+*** xref::class/Dataset.adoc[Dataset]
 
 
-*** xref::class/Bay.adoc[Bay]
 
+*** xref::class/DatasetSeries.adoc[DatasetSeries]
 
 
-*** xref::class/Breaker.adoc[Breaker]
 
+*** xref::class/Distribution.adoc[Distribution]
 
 
-*** xref::class/BusbarSection.adoc[BusbarSection]
 
+*** xref::class/Kind.adoc[Kind]
 
 
-*** xref::class/BusbarSectionInfo.adoc[BusbarSectionInfo]
 
+*** xref::class/LiceneseDocument.adoc[LiceneseDocument]
 
 
-*** xref::class/BusSegment.adoc[BusSegment]
 
+*** xref::class/Metric.adoc[Metric]
 
 
-*** xref::class/ConductingEquipment.adoc[ConductingEquipment]
 
+*** xref::class/PeriodOfTime.adoc[PeriodOfTime]
 
 
-*** xref::class/Conductor.adoc[Conductor]
 
+*** xref::class/QualityMeasurement.adoc[QualityMeasurement]
 
 
-*** xref::class/ConnectivityNode.adoc[ConnectivityNode]
 
+*** xref::class/Resource.adoc[Resource]
 
 
-*** xref::class/ConnectivityNodeContainer.adoc[ConnectivityNodeContainer]
 
+*** xref::class/URI.adoc[URI]
 
 
-*** xref::class/Connector.adoc[Connector]
-
-
-
-*** xref::class/Curve.adoc[Curve]
-
-
-
-*** xref::class/CurveData.adoc[CurveData]
-
-
-
-*** xref::class/Disconnector.adoc[Disconnector]
-
-
-
-*** xref::class/EarthFaultCompensator.adoc[EarthFaultCompensator]
-
-
-
-*** xref::class/EnergyConnection.adoc[EnergyConnection]
-
-
-
-*** xref::class/EnergyConsumer.adoc[EnergyConsumer]
-
-
-
-*** xref::class/EnergySource.adoc[EnergySource]
-
-
-
-*** xref::class/Equipment.adoc[Equipment]
-
-
-
-*** xref::class/EquipmentContainer.adoc[EquipmentContainer]
-
-
-
-*** xref::class/EquivalentEquipment.adoc[EquivalentEquipment]
-
-
-
-*** xref::class/EquivalentInjection.adoc[EquivalentInjection]
-
-
-
-*** xref::class/Feeder.adoc[Feeder]
-
-
-
-*** xref::class/Fuse.adoc[Fuse]
-
-
-
-*** xref::class/FuseInfo.adoc[FuseInfo]
-
-
-
-*** xref::class/GroundingImpedance.adoc[GroundingImpedance]
-
-
-
-*** xref::class/IdentifiedObject.adoc[IdentifiedObject]
-
-
-
-*** xref::class/Junction.adoc[Junction]
-
-
-
-*** xref::class/Line.adoc[Line]
-
-
-
-*** xref::class/LoadBreakSwitch.adoc[LoadBreakSwitch]
-
-
-
-*** xref::class/LoadGroup.adoc[LoadGroup]
-
-
-
-*** xref::class/LoadResponseCharacteristic.adoc[LoadResponseCharacteristic]
-
-
-
-*** xref::class/NonConformLoad.adoc[NonConformLoad]
-
-
-
-*** xref::class/NonConformLoadGroup.adoc[NonConformLoadGroup]
-
-
-
-*** xref::class/NonConformLoadSchedule.adoc[NonConformLoadSchedule]
-
-
-
-*** xref::class/PowerSystemResource.adoc[PowerSystemResource]
-
-
-
-*** xref::class/PowerTransformer.adoc[PowerTransformer]
-
-
-
-*** xref::class/PowerTransformerEnd.adoc[PowerTransformerEnd]
-
-
-
-*** xref::class/PowerTransformerInfo.adoc[PowerTransformerInfo]
-
-
-
-*** xref::class/ProtectedSwitch.adoc[ProtectedSwitch]
-
-
-
-*** xref::class/PSRType.adoc[PSRType]
-
-
-
-*** xref::class/RatioTapChanger.adoc[RatioTapChanger]
-
-
-
-*** xref::class/RegularIntervalSchedule.adoc[RegularIntervalSchedule]
-
-
-
-*** xref::class/RegularTimePoint.adoc[RegularTimePoint]
-
-
-
-*** xref::class/RegulatingControl.adoc[RegulatingControl]
-
-
-
-*** xref::class/SeasonDayTypeSchedule.adoc[SeasonDayTypeSchedule]
-
-
-
-*** xref::class/SeriesCompensator.adoc[SeriesCompensator]
-
-
-
-*** xref::class/Substation.adoc[Substation]
-
-
-
-*** xref::class/Switch.adoc[Switch]
-
-
-
-*** xref::class/SwitchInfo.adoc[SwitchInfo]
-
-
-
-*** xref::class/TapChanger.adoc[TapChanger]
-
-
-
-*** xref::class/TapChangerControl.adoc[TapChangerControl]
-
-
-
-*** xref::class/Terminal.adoc[Terminal]
-
-
-
-*** xref::class/TransformerEnd.adoc[TransformerEnd]
-
-
-
-*** xref::class/UseagePoint.adoc[UseagePoint]
-
-
-
-*** xref::class/VoltageLevel.adoc[VoltageLevel]
-
-
-
-*** xref::class/WireInfo.adoc[WireInfo]
-
-
-
-** CIM data types
-*** xref::class/ActivePower.adoc[ActivePower]
-*** xref::class/ApparentPower.adoc[ApparentPower]
-*** xref::class/Capacitance.adoc[Capacitance]
-*** xref::class/Conductance.adoc[Conductance]
-*** xref::class/CurrentFlow.adoc[CurrentFlow]
-*** xref::class/Length.adoc[Length]
-*** xref::class/PerCent.adoc[PerCent]
-*** xref::class/Reactance.adoc[Reactance]
-*** xref::class/Resistance.adoc[Resistance]
-*** xref::class/Susceptance.adoc[Susceptance]
-*** xref::class/Voltage.adoc[Voltage]
 

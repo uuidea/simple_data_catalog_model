@@ -1,0 +1,46 @@
+= `DataCatalog`
+:toclevels: 4
+
+
++++A curated collection of metadata about datasets, data services, and related resources.+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| http://www.w3.org/ns/dcat#Catalog[`dcat:Catalog`]
+
+
+
+
+|===
+
+== Class hierarchy
+* xref::class/Resource.adoc[`Resource`]
+** xref::class/Dataset.adoc[`Dataset`]
+*** *`DataCatalog`*
+
+
+== Slots
+
+
+This class has no slots.
+
+
+== Used by
+
+
+[cols="1,1",width=65%]
+|===
+| Source class | Slot name
+
+
+
+| xref::class/Container.adoc[`Container`] | xref::class/Container.adoc#dataCatalog[`dataCatalog`]
+
+
+|===
+

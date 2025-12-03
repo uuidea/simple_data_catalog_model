@@ -1,0 +1,36 @@
+= `Resource`
+:toclevels: 4
+
+
++++A resource that is described in the catalog (e.g., a dataset, a data service, or a catalog).+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| http://www.w3.org/ns/dcat#Resource[`dcat:Resource`]
+
+
+
+
+|===
+
+== Class hierarchy
+* *`Resource`*
+ ** xref::class/DataService.adoc[`DataService`]
+ ** xref::class/Dataset.adoc[`Dataset`]
+
+
+== Slots
+
+
+This class has no slots.
+
+
+== Used by
+
+
+This class is not used by any other classes as the range of a slot.

@@ -1,0 +1,46 @@
+= `DatasetSeries`
+:toclevels: 4
+
+
++++A series of datasets that are related in some way (e.g., by time, version, or theme).+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| http://www.w3.org/ns/dcat#DatasetSeries[`dcat:DatasetSeries`]
+
+
+
+
+|===
+
+== Class hierarchy
+* xref::class/Resource.adoc[`Resource`]
+** xref::class/Dataset.adoc[`Dataset`]
+*** *`DatasetSeries`*
+
+
+== Slots
+
+
+This class has no slots.
+
+
+== Used by
+
+
+[cols="1,1",width=65%]
+|===
+| Source class | Slot name
+
+
+
+| xref::class/Container.adoc[`Container`] | xref::class/Container.adoc#series[`series`]
+
+
+|===
+

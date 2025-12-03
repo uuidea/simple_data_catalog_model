@@ -1,0 +1,34 @@
+= `Kind`
+:toclevels: 4
+
+
++++A vCard kind representing a contact point for a resource.+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| http://www.w3.org/2006/vcard/ns#Kind[`vcard:Kind`]
+
+
+
+
+|===
+
+== Class hierarchy
+* *`Kind`*
+
+
+== Slots
+
+
+This class has no slots.
+
+
+== Used by
+
+
+This class is not used by any other classes as the range of a slot.

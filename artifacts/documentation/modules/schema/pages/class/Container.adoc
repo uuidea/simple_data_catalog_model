@@ -1,0 +1,303 @@
+= `Container`
+:toclevels: 4
+
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+
+
+
+|===
+
+== Class hierarchy
+* *`Container`*
+
+
+== Slots
+
+
+
+
+[cols="1,1,2,1",width=100%]
+|===
+| Name | Type | Description | Inherited from
+
+| <<concepts,`concepts`>>
+//| [[slots_table.concepts]]<<concepts,`concepts`>>
+| 0..* +
+xref::class/Concept.adoc[`Concept`]
+| _n/a_
+| _n/a_
+
+| <<dataCatalog,`dataCatalog`>>
+//| [[slots_table.dataCatalog]]<<dataCatalog,`dataCatalog`>>
+| 1 +
+xref::class/DataCatalog.adoc[`DataCatalog`]
+| _n/a_
+| _n/a_
+
+| <<dataServices,`dataServices`>>
+//| [[slots_table.dataServices]]<<dataServices,`dataServices`>>
+| 0..* +
+xref::class/DataService.adoc[`DataService`]
+| _n/a_
+| _n/a_
+
+| <<datasets,`datasets`>>
+//| [[slots_table.datasets]]<<datasets,`datasets`>>
+| 0..* +
+xref::class/Dataset.adoc[`Dataset`]
+| _n/a_
+| _n/a_
+
+| <<distributions,`distributions`>>
+//| [[slots_table.distributions]]<<distributions,`distributions`>>
+| 0..* +
+xref::class/Distribution.adoc[`Distribution`]
+| _n/a_
+| _n/a_
+
+| <<metrics,`metrics`>>
+//| [[slots_table.metrics]]<<metrics,`metrics`>>
+| 0..* +
+xref::class/Metric.adoc[`Metric`]
+| _n/a_
+| _n/a_
+
+| <<qualityMeasurements,`qualityMeasurements`>>
+//| [[slots_table.qualityMeasurements]]<<qualityMeasurements,`qualityMeasurements`>>
+| 0..* +
+xref::class/QualityMeasurement.adoc[`QualityMeasurement`]
+| _n/a_
+| _n/a_
+
+| <<series,`series`>>
+//| [[slots_table.series]]<<series,`series`>>
+| 0..* +
+xref::class/DatasetSeries.adoc[`DatasetSeries`]
+| _n/a_
+| _n/a_
+|===
+
+'''
+
+
+//[discrete]
+[#concepts]
+=== `concepts`
+
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| _n/a_
+| Cardinality
+| 0..*
+| Type
+| xref::class/Concept.adoc[`Concept`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.concepts,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#dataCatalog]
+=== `dataCatalog`
+
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| _n/a_
+| Cardinality
+| 1
+| Type
+| xref::class/DataCatalog.adoc[`DataCatalog`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.dataCatalog,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#dataServices]
+=== `dataServices`
+
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| _n/a_
+| Cardinality
+| 0..*
+| Type
+| xref::class/DataService.adoc[`DataService`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.dataServices,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#datasets]
+=== `datasets`
+
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| _n/a_
+| Cardinality
+| 0..*
+| Type
+| xref::class/Dataset.adoc[`Dataset`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.datasets,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#distributions]
+=== `distributions`
+
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| _n/a_
+| Cardinality
+| 0..*
+| Type
+| xref::class/Distribution.adoc[`Distribution`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.distributions,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#metrics]
+=== `metrics`
+
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| _n/a_
+| Cardinality
+| 0..*
+| Type
+| xref::class/Metric.adoc[`Metric`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.metrics,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#qualityMeasurements]
+=== `qualityMeasurements`
+
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| _n/a_
+| Cardinality
+| 0..*
+| Type
+| xref::class/QualityMeasurement.adoc[`QualityMeasurement`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.qualityMeasurements,&#10548;>>
+--
+////
+
+
+//[discrete]
+[#series]
+=== `series`
+
+
+
+[cols="h,4",width=65%]
+|===
+| URI
+| _n/a_
+| Cardinality
+| 0..*
+| Type
+| xref::class/DatasetSeries.adoc[`DatasetSeries`]
+
+
+|===
+
+////
+[.text-left]
+--
+<<slots_table.series,&#10548;>>
+--
+////
+
+
+
+
+
+== Used by
+
+
+This class is not used by any other classes as the range of a slot.

@@ -1,0 +1,44 @@
+= `Distribution`
+:toclevels: 4
+
+
++++A specific representation of a dataset, typically available for download or access via a service.+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| http://www.w3.org/ns/dcat#Distribution[`dcat:Distribution`]
+
+
+
+
+|===
+
+== Class hierarchy
+* *`Distribution`*
+
+
+== Slots
+
+
+This class has no slots.
+
+
+== Used by
+
+
+[cols="1,1",width=65%]
+|===
+| Source class | Slot name
+
+
+
+| xref::class/Container.adoc[`Container`] | xref::class/Container.adoc#distributions[`distributions`]
+
+
+|===
+

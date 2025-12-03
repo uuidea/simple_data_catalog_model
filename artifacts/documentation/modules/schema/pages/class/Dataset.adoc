@@ -1,0 +1,47 @@
+= `Dataset`
+:toclevels: 4
+
+
++++A collection of data, published or curated by a single agent, and available for access or download.+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| http://www.w3.org/ns/dcat#Dataset[`dcat:Dataset`]
+
+
+
+
+|===
+
+== Class hierarchy
+* xref::class/Resource.adoc[`Resource`]
+** *`Dataset`*
+ *** xref::class/DataCatalog.adoc[`DataCatalog`]
+ *** xref::class/DatasetSeries.adoc[`DatasetSeries`]
+
+
+== Slots
+
+
+This class has no slots.
+
+
+== Used by
+
+
+[cols="1,1",width=65%]
+|===
+| Source class | Slot name
+
+
+
+| xref::class/Container.adoc[`Container`] | xref::class/Container.adoc#datasets[`datasets`]
+
+
+|===
+

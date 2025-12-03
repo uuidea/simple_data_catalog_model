@@ -1,0 +1,45 @@
+= `DataService`
+:toclevels: 4
+
+
++++A service that provides access to a dataset or a collection of datasets.+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| http://www.w3.org/ns/dcat#DataService[`dcat:DataService`]
+
+
+
+
+|===
+
+== Class hierarchy
+* xref::class/Resource.adoc[`Resource`]
+** *`DataService`*
+
+
+== Slots
+
+
+This class has no slots.
+
+
+== Used by
+
+
+[cols="1,1",width=65%]
+|===
+| Source class | Slot name
+
+
+
+| xref::class/Container.adoc[`Container`] | xref::class/Container.adoc#dataServices[`dataServices`]
+
+
+|===
+

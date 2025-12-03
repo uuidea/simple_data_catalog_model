@@ -1,0 +1,44 @@
+= `Concept`
+:toclevels: 4
+
+
++++A unit of thought (an idea or notion) that can be expressed as a term.+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| http://www.w3.org/2004/02/skos/core#Concept[`skos:Concept`]
+
+
+
+
+|===
+
+== Class hierarchy
+* *`Concept`*
+
+
+== Slots
+
+
+This class has no slots.
+
+
+== Used by
+
+
+[cols="1,1",width=65%]
+|===
+| Source class | Slot name
+
+
+
+| xref::class/Container.adoc[`Container`] | xref::class/Container.adoc#concepts[`concepts`]
+
+
+|===
+

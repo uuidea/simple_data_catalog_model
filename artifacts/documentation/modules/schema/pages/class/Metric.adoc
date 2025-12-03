@@ -1,0 +1,44 @@
+= `Metric`
+:toclevels: 4
+
+
++++A measurable aspect of data quality (e.g., accuracy, completeness).+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI
+| http://www.w3.org/ns/dqv#Metric[`dqv:Metric`]
+
+
+
+
+|===
+
+== Class hierarchy
+* *`Metric`*
+
+
+== Slots
+
+
+This class has no slots.
+
+
+== Used by
+
+
+[cols="1,1",width=65%]
+|===
+| Source class | Slot name
+
+
+
+| xref::class/Container.adoc[`Container`] | xref::class/Container.adoc#metrics[`metrics`]
+
+
+|===
+
