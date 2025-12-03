@@ -441,7 +441,7 @@ slots:
     # inlined_as_list: false
 
   servesDataset:
-    description: 	A collection of data that this data service can distribute.
+    description: A collection of data that this data service can distribute.
     slot_uri: dcat:servesDataset
     range: Dataset
     multivalued: true
