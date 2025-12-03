@@ -33,7 +33,7 @@ jobs:
         run: |
             cp -r "documentation" "artifacts"
                 mkdir -p "artifacts/documentation/modules/schema"
-                poetry run python -m linkml_asciidoc_generator.main \
+                uv run python -m linkml_asciidoc_generator.main \
                     "artifacts/information_models/uno_data_model.linkml.yaml" \
                     "artifacts/documentation/modules/schema" \
                     --no-relations-diagrams
