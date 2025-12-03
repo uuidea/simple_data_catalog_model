@@ -36,7 +36,7 @@ jobs:
                 uv run python -m linkml_asciidoc_generator.main \
                     "src/simple_data_catalog_model/data-catalog.yaml" \
                     "artifacts/documentation/modules/schema" \
-                    --no-relations-diagrams
+                    --yes-relations-diagrams
       #- name: Install Just 1.38.0
       #run: pip install rust-just==1.38.0
       - name: Install Node.js
