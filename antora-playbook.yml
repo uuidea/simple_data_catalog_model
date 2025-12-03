@@ -1,12 +1,12 @@
 site:
-  title: Simple Data Catalog Model
-  # start_page: data-catalog:data-catalog:abcde123.adoc
+  title: Documentation
+  # url: http://localhost:8080
+  start_page: ROOT::index.adoc 
 content:
   sources: 
-  - url: . 
-    branches: main
-    # start_page: data-catalog:data-catalog:{{catalog_name}}.adoc
-    
+  - url: .
+    branches: HEAD
+    start_path: artifacts/documentation
 ui: 
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
