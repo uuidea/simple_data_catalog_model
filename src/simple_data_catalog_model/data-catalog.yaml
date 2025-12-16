@@ -194,7 +194,7 @@ classes:
   Concept:
     class_uri: skos:Concept
     description: "A unit of thought (an idea or notion) that can be expressed as a term."
-    slots:
+    attributes:
       identifier:
         identifier: true
         description: 
