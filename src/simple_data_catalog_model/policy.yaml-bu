@@ -20,13 +20,12 @@ imports:
 
 # default_prefix: sdc
 
-################################
+#########################
 # Classes (entities)   #
-################################
+#########################
 classes:
   Any:
     class_uri: linkml:Any
-
   # Policy – now inherits from the default LinkML base
   Policy:
     class_uri: odrl:Policy
@@ -50,38 +49,14 @@ classes:
       In the latter case, the profile property MUST be used to indicate the IRIs of the ODRL Profile(s). See the ODRL Profiles section for more details on mechanisms to define ODRL Profiles and conformance requirements. (The Examples in this document will use ODRL Profile identifiers for illustrative purposes only.)
 
        An ODRL Policy MAY be subclassed to more precisely describe the context of use of the Policy that MAY include additional constraints that ODRL processors MUST understand. Additional Policy subclasses MAY be documented in the ODRL Common Vocabulary [odrl-vocab] or in ODRL Profiles. A Policy class MUST be disjoint will all Policy subclasses (except for Set).
-      '''
+        '''
     attributes:
-      - uid:
-          identifier: true
-          description: "Unique identifier for the policy or rule"
-          slot_uri: dcterms:identifier
-          range: string
-          required: true
-      - description:
-          description: "Description of the policy or rule"
-          slot_uri: dcterms:description
-          range: string
-          required: false
-      - obligation:
-          description: "Obligations in the policy"
-          slot_uri: odrl:obligation
-          range: Duty
-          multivalued: true
-          inlined_as_list: true
-          required: false
-      - permission:
-          description: "Permissions in the policy"
-          slot_uri: odrl:permission
-          range: Permission
-          multivalued: true
-          required: false
-      - prohibition:
-          description: "Prohibitions in the policy"
-          slot_uri: odrl:prohibition
-          range: Prohibition
-          multivalued: true
-          required: false
+      - uid
+      - description   
+      - obligation
+      - permission
+      - prohibition
+ 
 
   Set:
     is_a: Policy
@@ -105,82 +80,185 @@ classes:
       Note: The above property cardinalities reflect the normative ODRL Information Model. In some cases, repeat occurrences of some properties are also supported (as described in Policy Rule Composition and Compact Policy) but the normative atomic Policy is consistent with the above property cardinalities.
 
         Explicit sub-properties of the abstract relation, relation and failure properties must be used, the choice depending on the subclass of Rule in question.'''
-    attributes:
-      - description:
-          description: "Description of the rule"
-          slot_uri: dcterms:description
-          range: string
-          required: false
-      - action:
-          description: "The action to be performed"
-          slot_uri: odrl:action
-          range: string
-          required: true
-      - constraint:
-          description: "Constraints on the rule"
-          slot_uri: odrl:constraint
-          multivalued: true
-          required: false
+    slots:
+      - description
+      - action
+      - constraint
+
 
   Permission:
     is_a: Rule
     class_uri: odrl:Permission
     description: Grants the assignee the right to perform an action.
-    attributes:
-      - duty:
-          description: "Duties attached to permissions"
-          slot_uri: odrl:duty
-          range: Duty
-          multivalued: true
-          required: false
+    slots:
+      - duty
 
   Prohibition:
     is_a: Rule
     class_uri: odrl:Prohibition
     description: Denies the assignee the right to perform an action.
-    attributes:
-      - remedy:
-          description: "Remedies for prohibitions"
-          slot_uri: odrl:remedy
-          range: Duty
-          multivalued: true
-          required: false
+    slots:
+      - remedy
+
+
 
   Duty:
     class_uri: odrl:Duty
     is_a: Rule
     description: An obligation attached to a permission or prohibition.
+    slots:
+      - uid
+      - description
+      - action
+
+  Container:
+    tree_root: true
     attributes:
-      - consequence: 
-          description: 
-            The consequence property (a sub-property of 
-            the failure property) is utilised to express 
-            the repercussions of not fulfilling an 
-            agreed Policy obligation or duty for a 
-            Permission. If either of these fails to be 
-            fulfilled, then this will result in the 
-            consequence Duties also becoming new 
-            requirements, meaning that the original 
-            obligation or duty, as well as the 
-            consequence Duties MUST all be fulfilled.
-          slot_uri: odrl:consequence
-          required: false
-          multivalued: true
-          range: Duty  
-      # - uid:
-      #     identifier: true
-      #     description: "Unique identifier for the duty or rule"
-      #     slot_uri: dcterms:identifier
-      #     range: string
-      #     required: true
-      # - description:
-      #     description: "Description of the duty"
-      #     slot_uri: dcterms:description
-      #     range: string
-      #     required: false
-      # - action:
-      #     description: "The action to be performed"
-      #     slot_uri: odrl:action
-      #     range: string
-      #     required: true
+      policies:
+        multivalued: true
+        inlined_as_list: true
+        range: Policy
+        required: false
+      sets:
+        multivalued: true
+        inlined_as_list: true
+        range: Set
+        required: false
+
+
+slots:
+  uid:
+    identifier: true
+    description: "Unique identifier for the policy or rule"
+    slot_uri: dcterms:identifier
+    range: string
+    required: true
+
+  description:
+    description: "Description of the policy or rule"
+    slot_uri: dcterms:description
+    range: string
+    required: false
+
+  action:
+    description: "The action to be performed"
+    slot_uri: odrl:action
+    range: string
+    required: true
+
+  constraint:
+    description: "Constraints on the rule"
+    slot_uri: odrl:constraint
+    multivalued: true
+    required: false
+  
+  permission:
+     description: "Permissions in the policy"
+     slot_uri: odrl:permission
+     range: Permission
+     multivalued: true
+     required: false
+
+  obligation:
+     description: "Obligations in the policy"
+     slot_uri: odrl:obligation
+     range: Any
+     multivalued: true
+     inlined_as_list: true
+     required: false
+
+  prohibition:
+    description: "Prohibitions in the policy"
+    slot_uri: odrl:prohibition
+    range: Prohibition
+    multivalued: true
+    required: false
+
+  inheritFrom:
+    description: "Policies from which this policy inherits rules"
+    slot_uri: odrl:inheritFrom
+    range: string
+    multivalued: true
+    required: false
+
+  duty:
+    description: "Duties attached to permissions"
+    slot_uri: odrl:duty
+    range: Duty
+    multivalued: true
+    required: false
+
+  remedy:
+    description: "Remedies for prohibitions"
+    slot_uri: odrl:remedy
+    range: Duty
+    multivalued: true
+    required: false
+
+  type:
+    description: "Type of the duty or constraint"
+    slot_uri: odrl:type
+    range: string
+    required: false
+
+  profile:
+    description: "ODRL profile"
+    slot_uri: odrl:profile
+    range: string
+    required: false
+
+  # assignee:
+  #   description: "Assignee of the duty"
+  #   slot_uri: odrl:assignee
+  #   range: string
+  #   required: false
+
+  # assigner:
+  #   description: "Assigner of the duty"
+  #   slot_uri: odrl:assigner
+  #   range: string
+  #   required: false
+
+  # consequence:
+  #   description: "Consequences of the duty"
+  #   slot_uri: odrl:consequence
+  #   range: Duty
+  #   multivalued: true
+  #   required: false
+
+  # leftOperand:
+  #   description: "Left operand of the constraint"
+  #   slot_uri: odrl:leftOperand
+  #   range: string
+  #   required: true
+
+  # operator:
+  #   description: "Operator of the constraint"
+  #   slot_uri: odrl:operator
+  #   range: string
+  #   required: true
+
+  # rightOperand:
+  #   description: "Right operand of the constraint"
+  #   slot_uri: odrl:rightOperand
+  #   range: Any
+  #   required: false
+
+  # rightOperandReference:
+  #   description: "Reference to right operand"
+  #   slot_uri: odrl:rightOperandReference
+  #   range: string
+  #   required: false
+
+  # unit:
+  #   description: "Unit for the constraint"
+  #   slot_uri: odrl:unit
+  #   range: string
+  #   required: false
+
+  # dataType:
+  #   description: "Data type for the constraint"
+  #   slot_uri: odrl:dataType
+  #   range: string
+  #   required: false
 
