@@ -17,7 +17,6 @@ prefixes:
   adms: http://www.w3.org/ns/adms#
 imports:
   - linkml:types
-  - policy
 
 default_prefix: sdcdc
 default_range: Any
@@ -400,6 +399,7 @@ classes:
         slot_uri: prov:generatedAtTime
         range: date
         required: false
+        
   Policy:
     class_uri: odrl:Policy
     description:
@@ -424,38 +424,38 @@ classes:
        An ODRL Policy MAY be subclassed to more precisely describe the context of use of the Policy that MAY include additional constraints that ODRL processors MUST understand. Additional Policy subclasses MAY be documented in the ODRL Common Vocabulary [odrl-vocab] or in ODRL Profiles. A Policy class MUST be disjoint will all Policy subclasses (except for Set).
       '''
     attributes:
-      - uid:
-          identifier: true
-          description: "Unique identifier for the policy or rule"
-          slot_uri: dcterms:identifier
-          range: string
-          required: true
-      - description:
-          description: "Description of the policy or rule"
-          slot_uri: dcterms:description
-          range: string
-          required: false
-      - obligation:
-          description: "Obligations in the policy"
-          slot_uri: odrl:obligation
-          range: Duty
-          multivalued: true
-          inlined_as_list: true
-          required: false
-      - permission:
-          description: "Permissions in the policy"
-          slot_uri: odrl:permission
-          range: Permission
-          multivalued: true
-          required: false
-          inlined_as_list: true
-      - prohibition:
-          description: "Prohibitions in the policy"
-          slot_uri: odrl:prohibition
-          range: Prohibition
-          multivalued: true
-          inlined_as_list: true
-          required: false
+      uid:
+        identifier: true
+        description: "Unique identifier for the policy or rule"
+        slot_uri: dcterms:identifier
+        range: string
+        required: true
+      description:
+        description: "Description of the policy or rule"
+        slot_uri: dcterms:description
+        range: string
+        required: false
+      obligation:
+        description: "Obligations in the policy"
+        slot_uri: odrl:obligation
+        range: Duty
+        multivalued: true
+        inlined_as_list: true
+        required: false
+      permission:
+        description: "Permissions in the policy"
+        slot_uri: odrl:permission
+        range: Permission
+        multivalued: true
+        required: false
+        inlined_as_list: true
+      prohibition:
+        description: "Prohibitions in the policy"
+        slot_uri: odrl:prohibition
+        range: Prohibition
+        multivalued: true
+        inlined_as_list: true
+        required: false
 
   Set:
     is_a: Policy
@@ -480,78 +480,78 @@ classes:
 
         Explicit sub-properties of the abstract relation, relation and failure properties must be used, the choice depending on the subclass of Rule in question.'''
     attributes:
-      - uid:
-          identifier: true
-          description: "Unique identifier for the duty or rule"
-          slot_uri: dcterms:identifier
-          range: string
-          required: false
-      - description:
-          description: "Description of the rule"
-          slot_uri: dcterms:description
-          range: string
-          required: false
-      - action:
-          description: "The action to be performed"
-          slot_uri: odrl:action
-          range: string
-          required: true
+      uid:
+        identifier: true
+        description: "Unique identifier for the duty or rule"
+        slot_uri: dcterms:identifier
+        range: string
+        required: false
+      description:
+        description: "Description of the rule"
+        slot_uri: dcterms:description
+        range: string
+        required: false
+      action:
+        description: "The action to be performed"
+        slot_uri: odrl:action
+        range: string
+        required: true
 
-      - assignee:
-          description: 
-            To express the recipient Party of the Rule. In this 
-            context it is recommended to specify the role of the 
-            party responsible (see also https://docs.internationaldataspaces.org/ids-knowledgebase/idsa-rulebook/idsa-rulebook/2.-guiding-principles/2.5-role_models#core-roles)
-          slot_uri: odrl:assignee
-          multivalued: true
-          required: false
-          range: PartyCollection
+      assignee:
+        description: 
+          To express the recipient Party of the Rule. In this 
+          context it is recommended to specify the role of the 
+          party responsible (see also https://docs.internationaldataspaces.org/ids-knowledgebase/idsa-rulebook/idsa-rulebook/2.-guiding-principles/2.5-role_models#core-roles)
+        slot_uri: odrl:assignee
+        multivalued: true
+        required: false
+        range: PartyCollection
 
   Permission:
     is_a: Rule
     class_uri: odrl:Permission
     description: Grants the assignee the right to perform an action.
     attributes:
-      - duty:
-          description: "Duties attached to permissions"
-          slot_uri: odrl:duty
-          range: Duty
-          multivalued: true
-          required: false
+      duty:
+        description: "Duties attached to permissions"
+        slot_uri: odrl:duty
+        range: Duty
+        multivalued: true
+        required: false
 
   Prohibition:
     is_a: Rule
     class_uri: odrl:Prohibition
     description: Denies the assignee the right to perform an action.
     attributes:
-      - remedy:
-          description: "Remedies for prohibitions"
-          slot_uri: odrl:remedy
-          range: Duty
-          multivalued: true
-          required: false
+      remedy:
+        description: "Remedies for prohibitions"
+        slot_uri: odrl:remedy
+        range: Duty
+        multivalued: true
+        required: false
 
   Duty:
     class_uri: odrl:Duty
     is_a: Rule
     description: An obligation attached to a permission or prohibition.
     attributes:
-      - consequence: 
-          description: 
-            The consequence property (a sub-property of 
-            the failure property) is utilised to express 
-            the repercussions of not fulfilling an 
-            agreed Policy obligation or duty for a 
-            Permission. If either of these fails to be 
-            fulfilled, then this will result in the 
-            consequence Duties also becoming new 
-            requirements, meaning that the original 
-            obligation or duty, as well as the 
-            consequence Duties MUST all be fulfilled.
-          slot_uri: odrl:consequence
-          required: false
-          multivalued: true
-          range: Duty  
+      consequence: 
+        description: 
+          The consequence property (a sub-property of 
+          the failure property) is utilised to express 
+          the repercussions of not fulfilling an 
+          agreed Policy obligation or duty for a 
+          Permission. If either of these fails to be 
+          fulfilled, then this will result in the 
+          consequence Duties also becoming new 
+          requirements, meaning that the original 
+          obligation or duty, as well as the 
+          consequence Duties MUST all be fulfilled.
+        slot_uri: odrl:consequence
+        required: false
+        multivalued: true
+        range: Duty  
 
 
   Container:
