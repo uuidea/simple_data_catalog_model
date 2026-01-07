@@ -17,7 +17,7 @@ prefixes:
   adms: http://www.w3.org/ns/adms#
 imports:
   - linkml:types
-#  - policy
+  - policy
 
 default_prefix: sdcdc
 default_range: Any
@@ -110,10 +110,14 @@ classes:
         slot_uri: prov:wasDerivedFrom
         range: Resource
         multivalued: true
-        required: false 
+        required: false
+      hasPolicy:
+        description: "The ODRL policy associated with this resource"
+        slot_uri: odrl:hasPolicy
+        range: Policy
+        multivalued: false
+        required: false   
       
-
-
   Dataset:
     class_uri: dcat:Dataset
     description: "A collection of data, published or curated by a single agent, and available for access or download."
