@@ -15,19 +15,21 @@ prefixes:
   dqv: http://www.w3.org/ns/dqv#
   ex: http://www.example.com#
   adms: http://www.w3.org/ns/adms#
+  plcy: https://www.uuidea.eu/simple_data_catalog/policies/
+
 imports:
   - linkml:types
-
+# default_range: Any
 default_prefix: sdcdc
-default_range: Any
+
 
 
 classes:
   Any:
     class_uri: linkml:Any
 
-  URI:
-    class_uri:   
+  # URI:
+  #   class_uri:   
 
   Resource:
     class_uri: dcat:Resource
@@ -430,6 +432,11 @@ classes:
         slot_uri: dcterms:identifier
         range: string
         required: true
+      title:
+        description: The title of the policy, not required for odrl compliance but very friendly for human readers (or AI agents). Recommended for the simple data catalog. If not provided the webpage will have the uid as title.
+        slot_uri: dcterms:title  
+        range: string
+        required: false
       description:
         description: "Description of the policy or rule"
         slot_uri: dcterms:description
@@ -485,7 +492,7 @@ classes:
         description: "Unique identifier for the duty or rule"
         slot_uri: dcterms:identifier
         range: string
-        required: false
+        # required: false
       description:
         description: "Description of the rule"
         slot_uri: dcterms:description
@@ -572,13 +579,11 @@ classes:
         multivalued: true
         inlined_as_list: true
         range: DatasetSeries
-        required: false
-        
+        required: false   
       dataCatalog:  
         multivalued: false
         range: DataCatalog
         required: true
-
         inlined: true
       distributions: 
         multivalued: true  
@@ -599,7 +604,12 @@ classes:
         multivalued: true
         inlined_as_list: true
         range: DataService
-        required: false   
+        required: false
+      policies:
+        multivalued: true
+        inlined_as_list: true
+        range: Policy
+        required: false  
 
 
 
