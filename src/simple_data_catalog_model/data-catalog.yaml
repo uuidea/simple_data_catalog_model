@@ -77,7 +77,7 @@ classes:
         description:
           "A legal document giving official permission to do something with the resource." 
         slot_uri: dcterms:license
-        range: LiceneseDocument
+        range: LicenseDocument
         required: false
       version:
         description:
