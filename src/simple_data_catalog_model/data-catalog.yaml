@@ -168,7 +168,7 @@ classes:
         required: false
         inlined: true
 
-  LiceneseDocument:
+  LicenseDocument:
     class_uri: dcterms:LicenseDocument
     description: "A vCard kind representing a contact point for a resource."
     attributes:
@@ -289,7 +289,7 @@ classes:
       modified: 
         description:
           "date on which the resource was changed." 
-        slot_uri: dcat:theme
+        slot_uri: dcterms:modified
         range: date
         required: false  
       accessURL:

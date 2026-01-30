@@ -1,0 +1,163 @@
+@startuml
+skinparam nodesep 10
+hide circle
+hide empty members
+class "Rule" [[{'The Rule class is the parent of the Permission, Prohibition, and Duty classes. The Rule class represents the common characteristics of these three classes. A Rule class MUST be disjoint with all other Rule subclasses.}]] {
+    {field} uid : string  
+    {field} description : string  
+    {field} action : string  
+    {field} assignee : PartyCollection  [0..*]
+}
+class "Prohibition" [[{Denies the assignee the right to perform an action.}]] {
+    {field} uid(i) : string  
+    {field} description(i) : string  
+    {field} action(i) : string  
+    {field} assignee(i) : PartyCollection  [0..*]
+}
+class "Permission" [[{Grants the assignee the right to perform an action.}]] {
+    {field} uid(i) : string  
+    {field} description(i) : string  
+    {field} action(i) : string  
+    {field} assignee(i) : PartyCollection  [0..*]
+}
+class "Duty" [[{An obligation attached to a permission or prohibition.}]] {
+    {field} uid(i) : string  
+    {field} description(i) : string  
+    {field} action(i) : string  
+    {field} assignee(i) : PartyCollection  [0..*]
+}
+"Rule" ^-- "Prohibition"
+"Rule" ^-- "Permission"
+"Rule" ^-- "Duty"
+class "Resource" [[{A resource that is described in the catalog (e.g., a dataset, a data service, or a catalog).}]] {
+    {field} identifier : string  
+    {field} title : string  
+    {field} description : string  
+    {field} issued : date  
+    {field} version : string  
+    {field} status : string  
+    {field} modified : date  
+}
+class "Policy" [[{' The Policy class has the following properties:}]] {
+    {field} uid : string  
+    {field} title : string  
+    {field} description : string  
+}
+class "Concept" [[{A unit of thought (an idea or notion) that can be expressed as a term.}]] {
+    {field} identifier : string  
+    {field} definition : string  
+    {field} prefLabel : string  
+    {field} altLabel : string  
+    {field} example : string  
+}
+class "LiceneseDocument" [[{A vCard kind representing a contact point for a resource.}]] {
+    {field} title : string  
+}
+class "Kind" [[{A vCard kind representing a contact point for a resource.}]] {
+    {field} hasEmail : string  
+}
+class "Agent" [[{An entity (person, organization, or software) that can be a publisher, creator, or contributor of a resource.}]] {
+    {field} name : string  
+}
+class "QualityMeasurement" [[{An observation of a metric applied to a specific resource.}]] {
+    {field} identifier : string  
+    {field} value : float  
+    {field} generatedAtTime : date  
+}
+class "Dataset" [[{A collection of data, published or curated by a single agent, and available for access or download.}]] {
+    {field} identifier(i) : string  
+    {field} title(i) : string  
+    {field} description(i) : string  
+    {field} issued(i) : date  
+    {field} version(i) : string  
+    {field} status(i) : string  
+    {field} modified(i) : date  
+}
+class "DataService" [[{A service that provides access to a dataset or a collection of datasets.}]] {
+    {field} endpointURL : string  
+    {field} identifier(i) : string  
+    {field} title(i) : string  
+    {field} description(i) : string  
+    {field} issued(i) : date  
+    {field} version(i) : string  
+    {field} status(i) : string  
+    {field} modified(i) : date  
+}
+"Resource" --> "0..1" "Policy" : "hasPolicy"
+"Resource" --> "0..*" "Resource" : "wasDerivedFrom"
+"Resource" *--> "0..*" "Concept" : "theme"
+"Resource" *--> "0..1" "LiceneseDocument" : "license"
+"Resource" *--> "0..1" "Kind" : "contactPoint"
+"Resource" *--> "0..1" "Agent" : "publisher"
+"QualityMeasurement" --> "1" "Resource" : "computedOn"
+"Resource" ^-- "Dataset"
+"Resource" ^-- "DataService"
+class "Metric" [[{A measurable aspect of data quality (e.g., accuracy, completeness).}]] {
+    {field} identifier : string  
+    {field} definition : string  
+    {field} prefLabel : string  
+    {field} inDimension : string  
+}
+
+"QualityMeasurement" --> "0..1" "Metric" : "isMeasurementOf"
+
+"Prohibition" --> "0..*" "Duty" : "remedy"
+"Policy" *--> "0..*" "Prohibition" : "prohibition"
+class "Set" [[{ODRL Set policy, the default subclass of Policy, representing any combination of Rules}]] {
+    {field} uid(i) : string  
+    {field} title(i) : string  
+    {field} description(i) : string  
+}
+"Policy" *--> "0..*" "Permission" : "permission"
+"Policy" *--> "0..*" "Duty" : "obligation"
+
+"Policy" ^-- "Set"
+"Permission" --> "0..*" "Duty" : "duty"
+class "PeriodOfTime" [[{A temporal extent or interval.}]] {
+    {field} hasBeginning : date  
+    {field} hasEnd : date  
+}
+"Dataset" *--> "0..1" "PeriodOfTime" : "temporal"
+class "Any" [[{None}]] {
+
+}
+"Metric" *--> "0..1" "Any" : "expectedDataType"
+
+"Duty" --> "0..*" "Duty" : "consequence"
+class "Distribution" [[{A specific representation of a dataset, typically available for download or access via a service.}]] {
+    {field} identifier : string  
+    {field} title : string  
+    {field} description : string  
+    {field} issued : date  
+    {field} version : string  
+    {field} modified : date  
+    {field} accessURL : string  
+    {field} format : string  
+}
+
+"Dataset" *--> "0..*" "Distribution" : "distribution"
+class "DatasetSeries" [[{A series of datasets that are related in some way (e.g., by time, version, or theme).}]] {
+    {field} identifier(i) : string  
+    {field} title(i) : string  
+    {field} description(i) : string  
+    {field} issued(i) : date  
+    {field} version(i) : string  
+    {field} status(i) : string  
+    {field} modified(i) : date  
+}
+class "DataCatalog" [[{A curated collection of metadata about datasets, data services, and related resources.}]] {
+    {field} identifier(i) : string  
+    {field} title(i) : string  
+    {field} description(i) : string  
+    {field} issued(i) : date  
+    {field} version(i) : string  
+    {field} status(i) : string  
+    {field} modified(i) : date  
+}
+"Dataset" --> "0..1" "DatasetSeries" : "inSeries"
+"DataCatalog" --> "0..*" "Dataset" : "dataset"
+"DataService" *--> "0..*" "Dataset" : "servesDataset"
+"Dataset" ^-- "DatasetSeries"
+"Dataset" ^-- "DataCatalog"
+
+@enduml
